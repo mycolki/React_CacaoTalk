@@ -1,7 +1,6 @@
+import { HTMLAttributes } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'react';
-
 import { COLORS } from 'style/palette';
 
 const textStyle1 = css`
