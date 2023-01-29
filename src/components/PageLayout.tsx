@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { COLORS } from 'style/palette';
 
 function PageLayout({ children }: { children: ReactNode }) {
   return (
@@ -21,5 +20,4 @@ const Background = styled.div`
 const Layout = styled.div`
   min-width: 375px;
   height: 100%;
-  background-color: ${COLORS.PURPLE};
 `;

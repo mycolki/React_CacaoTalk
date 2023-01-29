@@ -23,6 +23,9 @@ function Global() {
         :root {
           --app-height: 100%;
         }
+        * {
+          box-sizing: border-box;
+        }
         body {
           height: calc(var(--app-height, 100vh));
           font-family: AppleSDGothicNeo;
