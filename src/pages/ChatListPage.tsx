@@ -1,5 +1,11 @@
+import { ChatListHeader } from 'components/ChatList';
+
 function ChatListPage() {
-  return <h1>ChatList</h1>;
+  return (
+    <div>
+      <ChatListHeader />
+    </div>
+  );
 }
 
 export default ChatListPage;

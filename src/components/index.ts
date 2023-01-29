@@ -1,4 +1,5 @@
 export * as Icon from './Icon';
+export * as ChatList from './ChatList';
 export { default as PageLayout } from './PageLayout';
 export { default as Text } from './Text';
 export { default as Header } from './Header';
