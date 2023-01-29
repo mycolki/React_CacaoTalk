@@ -1,5 +1,6 @@
 import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
+import { HTMLAttributes } from 'react';
 
 import { COLORS } from 'style/palette';
 
@@ -28,15 +29,14 @@ const textStyles = { textStyle1, textStyle2, textStyle4, textStyle3 };
 
 type TextStyle = keyof typeof textStyles;
 
-interface TextProps {
-  children: string;
+interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   textStyle?: TextStyle;
   color?: keyof typeof COLORS;
 }
 
-function Text({ children, textStyle, color = 'BLACK' }: TextProps) {
+function Text({ children, textStyle, color = 'BLACK', ...rest }: TextProps) {
   return (
-    <StyledText textStyle={textStyle ? textStyles[textStyle] : undefined} color={COLORS[color]}>
+    <StyledText textStyle={textStyle ? textStyles[textStyle] : undefined} color={COLORS[color]} {...rest}>
       {children}
     </StyledText>
   );
@@ -50,6 +50,6 @@ const StyledText = styled.span<{ textStyle?: SerializedStyles; color: string }>`
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-  ${({ textStyle }) => textStyle}
-  color: ${({ color }) => color}
+  ${({ textStyle }) => textStyle};
+  color: ${({ color }) => color};
 `;
