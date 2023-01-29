@@ -25,6 +25,7 @@ function Global() {
         }
         body {
           height: calc(var(--app-height, 100vh));
+          font-family: AppleSDGothicNeo;
         }
       `}
     />
