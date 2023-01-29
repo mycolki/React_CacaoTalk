@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
+export * as Icon from './Icon';
 export { default as PageLayout } from './PageLayout';

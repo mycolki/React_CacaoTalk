@@ -45,6 +45,7 @@
     "no-console": "warn",
     "require-await": "warn",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "consistent-return": "off",
     "react/jsx-filename-extension": [
