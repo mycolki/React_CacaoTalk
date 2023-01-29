@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { COLORS } from 'style/palette';
+import COLORS from 'style/palette';
 
 interface HeaderProps {
   left?: ReactNode;

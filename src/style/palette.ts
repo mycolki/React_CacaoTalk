@@ -1,4 +1,4 @@
-export const COLORS = {
+const COLORS = {
   CHARCOAL_GREY: '#464052',
   CHARCOAL_GREY2: '#363A42',
   COOL_GREY: '#A4A6B0',

@@ -1,17 +1,17 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { COLORS } from 'style/palette';
+import COLORS from 'style/palette';
 
 interface CircleProps {
   children: ReactNode;
   size: string;
   padding?: string;
-  bgColor: keyof typeof COLORS;
+  bgColor?: keyof typeof COLORS;
 }
 
 function Circle({ children, size, padding, bgColor }: CircleProps) {
   return (
-    <Wrapper size={size} padding={padding} bgColor={COLORS[bgColor]}>
+    <Wrapper size={size} padding={padding} bgColor={bgColor ? COLORS[bgColor] : undefined}>
       {children}
     </Wrapper>
   );

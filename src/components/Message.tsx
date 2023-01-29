@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { COLORS } from 'style/palette';
+import COLORS from 'style/palette';
+
 import Text from './Text';
 
 type Align = 'left' | 'right';
