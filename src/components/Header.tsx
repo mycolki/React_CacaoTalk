@@ -27,7 +27,7 @@ const Container = styled.div<{ bgColor?: string }>`
   align-items: center;
   height: 44px;
   padding: 8px 11px 9px 12px;
-  ${props => props.bgColor && `background-color:${props.bgColor}`}
+  ${({ bgColor }) => bgColor && `background-color:${bgColor}`}
 `;
 
 const Column1 = styled.div`

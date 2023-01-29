@@ -50,6 +50,6 @@ const StyledText = styled.span<{ textStyle?: SerializedStyles; color: string }>`
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-  ${props => props.textStyle}
-  color: ${props => props.color}
+  ${({ textStyle }) => textStyle}
+  color: ${({ color }) => color}
 `;
