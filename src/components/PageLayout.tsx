@@ -21,5 +21,5 @@ const Background = styled.div`
 const Layout = styled.div`
   width: 375px;
   height: 100%;
-  background-color: ${COLORS.PALE_GREY};
+  border: 1px solid ${COLORS.PALE_LILAC};
 `;

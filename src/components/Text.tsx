@@ -33,12 +33,12 @@ interface TextProps {
   color?: keyof typeof COLORS;
 }
 
-function Text({ textStyle, color = 'BLACK', children, ...rest }: PropsWithChildren<TextProps>) {
+function Text({ textStyle, color, children, ...rest }: PropsWithChildren<TextProps>) {
   return (
     <StyledText
       textStyle={textStyle ? textStyles[textStyle] : undefined}
       style={{
-        color: COLORS[color],
+        color: color ? COLORS[color] : 'inherit',
       }}
       {...rest}
     >

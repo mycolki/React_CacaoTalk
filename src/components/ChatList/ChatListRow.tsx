@@ -10,24 +10,28 @@ interface ChatListRowProps {
   sender: ReactNode;
   lastMessage: string;
   unreadMessageCount: number;
-  time: string;
+  timeStamp: string;
 }
 
-function ChatListRow({ image: imageColumn, sender, lastMessage, unreadMessageCount, time }: ChatListRowProps) {
+function ChatListRow({ image: imageColumn, sender, lastMessage, unreadMessageCount, timeStamp }: ChatListRowProps) {
   return (
     <ListRow>
       {imageColumn}
 
       <MessageColumn>
-        <SenderText textStyle="textStyle4">{sender}</SenderText>
-        <LastMessageText>{lastMessage}</LastMessageText>
+        <SenderText textStyle="textStyle4" color="CHARCOAL_GREY">
+          {sender}
+        </SenderText>
+        <LastMessageText color="COOL_GREY">{lastMessage}</LastMessageText>
       </MessageColumn>
 
       <TimeColumn>
-        <TimeText>{time}</TimeText>
-        <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
-          <UnreadMessageCountText color="WHITE">{unreadMessageCount}</UnreadMessageCountText>
-        </Circle>
+        <TimeText color="CHARCOAL_GREY2">{timeStamp}</TimeText>
+        {unreadMessageCount > 0 && (
+          <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
+            <UnreadMessageCountText color="WHITE">{unreadMessageCount}</UnreadMessageCountText>
+          </Circle>
+        )}
       </TimeColumn>
     </ListRow>
   );
@@ -61,7 +65,6 @@ const LastMessageText = styled(Text)`
   font-size: 0.813rem;
   font-weight: 500;
   letter-spacing: -0.1px;
-  color: ${COLORS.COOL_GREY};
 `;
 
 const TimeColumn = styled.div`
@@ -79,7 +82,6 @@ const TimeText = styled(Text)`
   font-weight: 500;
   letter-spacing: normal;
   text-align: right;
-  color: ${COLORS.CHARCOAL_GREY2};
 `;
 
 const UnreadMessageCountText = styled(Text)`
