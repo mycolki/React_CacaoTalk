@@ -72,7 +72,6 @@ const TimeColumn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 29px;
   gap: 0.375rem;
 `;
 
@@ -82,6 +81,7 @@ const TimeText = styled(Text)`
   font-weight: 500;
   letter-spacing: normal;
   text-align: right;
+  white-space: nowrap;
 `;
 
 const UnreadMessageCountText = styled(Text)`

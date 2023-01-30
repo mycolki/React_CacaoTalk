@@ -1,32 +1,15 @@
 import styled from '@emotion/styled';
-import getChats from 'apis/handlers/chats';
-import { Image, Spacing } from 'components';
-import { ChatListHeader, ChatListRow } from 'components/ChatList';
-import { useQuery } from 'react-query';
 import COLORS from 'style/palette';
-import { formatDateToLocale } from 'utils/formatDate';
+
+import { Spacing } from 'components';
+import { ChatList, ChatListHeader } from 'components/Chat';
 
 function ChatListPage() {
-  const { data: chats } = useQuery({
-    queryKey: ['chatList'],
-    queryFn: getChats,
-  });
-
   return (
     <Container>
       <ChatListHeader />
       <Spacing height={10} />
-
-      {chats?.map(({ roomId, member, lastMessage, unReadMessageCount, lastTimeStamp }) => (
-        <ChatListRow
-          key={roomId}
-          image={<Image src={member.profileImgUrl} alt="iamge" size={56} borderRadius="28px" />}
-          sender={member.name}
-          lastMessage={lastMessage}
-          unreadMessageCount={unReadMessageCount}
-          timeStamp={formatDateToLocale(lastTimeStamp, 'HH:mm')}
-        />
-      ))}
+      <ChatList />
     </Container>
   );
 }

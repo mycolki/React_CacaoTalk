@@ -1,5 +1,5 @@
 export * as Icon from './Icon';
-export * as ChatList from './ChatList';
+export * as Chat from './Chat';
 export * as ChatRoom from './ChatRoom';
 export { default as PageLayout } from './PageLayout';
 export { default as Text } from './Text';
