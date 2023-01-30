@@ -8,6 +8,7 @@
     "axios": "^1.2.6",
     "dayjs": "^1.11.7",
     "emotion-reset": "^3.0.1",
+    "immer": "^9.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
@@ -36,7 +37,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ios_saf >= 13.0",
+      "android >= 10.0"
     ],
     "development": [
       "last 1 chrome version",

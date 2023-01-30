@@ -13,8 +13,8 @@ export function formatDate(date: string, formatType?: FormatType) {
   return dayjs(date).format(formatType);
 }
 
-export function formatDateToUTC() {
-  return dayjs.utc().format();
+export function formatDateToUTC(date?: string) {
+  return dayjs(date).utc().format();
 }
 
 export function formatLastMessageDate(date: string) {

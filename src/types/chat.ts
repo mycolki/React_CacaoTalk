@@ -8,6 +8,6 @@ export interface Chat {
   roomId: string;
   lastMessage: string;
   lastTimeStamp: string;
-  unReadMessageCount: number;
+  unReadCount: number;
   member: Member;
 }

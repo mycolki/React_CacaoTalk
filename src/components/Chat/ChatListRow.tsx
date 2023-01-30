@@ -4,18 +4,29 @@ import COLORS from 'style/palette';
 
 import Text from 'components/Text';
 import Circle from 'components/Circle';
+import { useNavigate } from 'react-router-dom';
 
 interface ChatListRowProps {
+  roomId: string;
   image: ReactNode;
   sender: ReactNode;
   lastMessage: string;
-  unreadMessageCount: number;
+  unReadCount: number;
   timeStamp: string;
 }
 
-function ChatListRow({ image: imageColumn, sender, lastMessage, unreadMessageCount, timeStamp }: ChatListRowProps) {
+function ChatListRow({ roomId, image: imageColumn, sender, lastMessage, unReadCount, timeStamp }: ChatListRowProps) {
+  const naviagte = useNavigate();
   return (
-    <ListRow>
+    <ListRow
+      onClick={() =>
+        naviagte(`/room/${roomId}`, {
+          state: {
+            hasUnreadMessage: !!unReadCount,
+          },
+        })
+      }
+    >
       {imageColumn}
 
       <MessageColumn>
@@ -27,9 +38,9 @@ function ChatListRow({ image: imageColumn, sender, lastMessage, unreadMessageCou
 
       <TimeColumn>
         <TimeText color="CHARCOAL_GREY2">{timeStamp}</TimeText>
-        {unreadMessageCount > 0 && (
+        {unReadCount > 0 && (
           <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
-            <UnreadMessageCountText color="WHITE">{unreadMessageCount}</UnreadMessageCountText>
+            <UnReadCountText color="WHITE">{unReadCount}</UnReadCountText>
           </Circle>
         )}
       </TimeColumn>
@@ -84,7 +95,7 @@ const TimeText = styled(Text)`
   white-space: nowrap;
 `;
 
-const UnreadMessageCountText = styled(Text)`
+const UnReadCountText = styled(Text)`
   font-size: 0.625rem;
   letter-spacing: -0.08px;
 `;
