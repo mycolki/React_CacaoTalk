@@ -1,5 +1,6 @@
 export * as Icon from './Icon';
 export * as ChatList from './ChatList';
+export * as ChatRoom from './ChatRoom';
 export { default as PageLayout } from './PageLayout';
 export { default as Text } from './Text';
 export { default as Header } from './Header';
@@ -8,3 +9,5 @@ export { default as Circle } from './Circle';
 export { default as Message } from './Message';
 export { default as MessageForm } from './MessageForm';
 export { default as Button } from './Button';
+export { default as Spacing } from './Spacing';
+export { default as HorizontalDivider } from './HorizontalDivider';

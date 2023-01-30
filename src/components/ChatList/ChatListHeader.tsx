@@ -1,17 +1,26 @@
+import Button from 'components/Button';
 import Header from 'components/Header';
-import { MenuIcon, ProfileIcon } from 'components/Icon';
 import Text from 'components/Text';
+import { MenuIcon, ProfileIcon } from 'components/Icon';
 
 function ChatListHeader() {
   return (
     <Header
-      left={<MenuIcon />}
+      left={
+        <Button>
+          <MenuIcon />
+        </Button>
+      }
       center={
         <Text textStyle="textStyle3" color="WHITE">
           채팅
         </Text>
       }
-      right={<ProfileIcon />}
+      right={
+        <Button>
+          <ProfileIcon />
+        </Button>
+      }
       bgColor="PURPLE"
     />
   );

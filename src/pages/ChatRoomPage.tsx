@@ -1,5 +1,13 @@
+import { HorizontalDivider } from 'components';
+import { ChatRoomHeader } from 'components/ChatRoom';
+
 function ChatRoomPage() {
-  return <h1>ChatRoom</h1>;
+  return (
+    <>
+      <ChatRoomHeader sender="장만월 사장님" />
+      <HorizontalDivider text="12/13 월요일" />
+    </>
+  );
 }
 
 export default ChatRoomPage;
