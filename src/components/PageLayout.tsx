@@ -19,7 +19,7 @@ const Background = styled.div`
 `;
 
 const Layout = styled.div`
-  min-width: 375px;
+  width: 375px;
   height: 100%;
   background-color: ${COLORS.PALE_GREY};
 `;
