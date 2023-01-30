@@ -1,0 +1,21 @@
+{
+  "roomId": "Eddy9gdxfIN8-qgiNNNuZ",
+  "member": {
+    "id": "yuna@kakao.com",
+    "name": "김유나 인턴",
+    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/kinYuNa.png"
+  },
+  "messages": [
+    {
+      "id": "zgv00JOebajFKuUJTiprO",
+      "timeStamp": "2023-01-23T05:10:31Z",
+      "type": "text",
+      "sender": {
+        "id": "yuna@kakao.com",
+        "name": "김유나 인턴",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/kinYuNa.png"
+      },
+      "text": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ"
+    }
+  ]
+},

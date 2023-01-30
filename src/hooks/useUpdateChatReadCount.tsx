@@ -1,15 +1,15 @@
-import { putChatReadCount } from 'apis/handlers/chats';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
+import { updateChatReadCount } from 'handlers';
 
 function useUpdateChatReadCount({ roomId, hasUnreadMessage }: { roomId?: string; hasUnreadMessage: boolean }) {
-  const { mutate: updateChatReadCount } = useMutation({ mutationFn: putChatReadCount });
+  const { mutate } = useMutation({ mutationFn: updateChatReadCount });
 
   useEffect(() => {
     if (hasUnreadMessage && roomId) {
-      updateChatReadCount(roomId);
+      mutate(roomId);
     }
-  }, [updateChatReadCount, roomId, hasUnreadMessage]);
+  }, [mutate, roomId, hasUnreadMessage]);
 
   return {};
 }

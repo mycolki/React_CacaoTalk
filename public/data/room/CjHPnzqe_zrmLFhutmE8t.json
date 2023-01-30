@@ -1,0 +1,21 @@
+{
+  "roomId": "CjHPnzqe_zrmLFhutmE8t",
+  "member": {
+    "id": "no@kakao.com",
+    "name": "노준석 총지배인",
+    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/noJunSuck.png"
+  },
+  "messages": [
+    {
+      "id": "_iZt36WMDrxdMjByzuIq3",
+      "timeStamp": "2023-01-28T00:10:31Z",
+      "type": "text",
+      "sender": {
+        "id": "no@kakao.com",
+        "name": "노준석 총지배인",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/noJunSuck.png"
+      },
+      "text": "휴가에서 언제 돌아오시는지요. 돌아오시면 연락 부탁드립니다."
+    }
+  ]
+},

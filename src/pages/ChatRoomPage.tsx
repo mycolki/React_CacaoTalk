@@ -2,7 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-import { ChatRoomHeader } from 'components/ChatRoom';
+import { ChatMessages, ChatRoomHeader } from 'components/ChatRoom';
 import useUpdateChatReadCount from 'hooks/useUpdateChatReadCount';
 
 interface Location {
@@ -20,6 +20,7 @@ function ChatRoomPage() {
   return (
     <Container>
       <ChatRoomHeader sender="장만월 사장님" />
+      {roomId && <ChatMessages roomId={roomId} />}
     </Container>
   );
 }

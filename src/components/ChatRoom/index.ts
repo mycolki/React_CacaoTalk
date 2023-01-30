@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as ChatRoomHeader } from './ChatRoomHeader';
+export { default as ChatMessages } from './ChatMessages';

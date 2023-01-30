@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { getChats } from 'apis/handlers/chats';
+import { getChats } from 'handlers';
 import { formatLastMessageDate } from 'utils/formatDate';
 
 import Image from 'components/Image';

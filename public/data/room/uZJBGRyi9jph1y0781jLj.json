@@ -1,0 +1,21 @@
+{
+  "roomId": "uZJBGRyi9jph1y0781jLj",
+  "member": {
+    "id": "sinjung@kakao.com",
+    "name": "신정근 바텐더",
+    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
+  },
+  "messages": [
+    {
+      "id": "aMth1cMFkNTjX_EtmMANr",
+      "timeStamp": "2023-01-30T00:00:31Z",
+      "type": "text",
+      "sender": {
+        "id": "sinjung@kakao.com",
+        "name": "신정근 바텐더",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
+      },
+      "text": "오시는 길에 와인 몇병만 사다주세요."
+    }
+  ]
+},
