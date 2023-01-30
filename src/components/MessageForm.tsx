@@ -14,7 +14,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
   const [message, setMessage] = useState('');
 
   return (
-    <div style={{ padding: '16px' }}>
+    <Container>
       <Form
         onSubmit={e => {
           e.preventDefault();
@@ -28,11 +28,15 @@ function MessageForm({ onSubmit }: MessageFormProps) {
           </Circle>
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 }
 
 export default memo(MessageForm);
+
+const Container = styled.div`
+  padding: 16px;
+`;
 
 const Form = styled.form`
   display: flex;

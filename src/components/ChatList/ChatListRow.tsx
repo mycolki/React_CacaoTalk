@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
+
 import Text from 'components/Text';
 import Circle from 'components/Circle';
 
@@ -12,48 +13,20 @@ interface ChatListRowProps {
   time: string;
 }
 
-function ChatListRow({ image, sender, lastMessage, unreadMessageCount, time }: ChatListRowProps) {
+function ChatListRow({ image: imageColumn, sender, lastMessage, unreadMessageCount, time }: ChatListRowProps) {
   return (
     <ListRow>
-      <ProfileImageColumn>{image}</ProfileImageColumn>
+      {imageColumn}
+
       <MessageColumn>
-        <Text textStyle="textStyle4" style={{ display: 'block', marginBottom: '3px' }}>
-          {sender}
-        </Text>
-        <Text
-          style={{
-            fontSize: '0.813rem',
-            fontWeight: '500',
-            letterSpacing: '-0.1px',
-            color: COLORS.COOL_GREY,
-          }}
-        >
-          {lastMessage}
-        </Text>
+        <SenderText textStyle="textStyle4">{sender}</SenderText>
+        <LastMessageText>{lastMessage}</LastMessageText>
       </MessageColumn>
+
       <TimeColumn>
-        <Text
-          style={{
-            opacity: '0.4',
-            fontSize: '0.688rem',
-            fontWeight: '500',
-            letterSpacing: 'normal',
-            textAlign: 'right',
-            color: COLORS.CHARCOAL_GREY2,
-          }}
-        >
-          {time}
-        </Text>
+        <TimeText>{time}</TimeText>
         <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
-          <Text
-            color="WHITE"
-            style={{
-              fontSize: '0.625rem',
-              letterSpacing: '-0.08px',
-            }}
-          >
-            {unreadMessageCount}
-          </Text>
+          <UnreadMessageCountText color="WHITE">{unreadMessageCount}</UnreadMessageCountText>
         </Circle>
       </TimeColumn>
     </ListRow>
@@ -72,13 +45,23 @@ const ListRow = styled.li`
   background-color: ${COLORS.WHITE};
 `;
 
-const ProfileImageColumn = styled.div``;
-
 const MessageColumn = styled.div`
   width: 230px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+const SenderText = styled(Text)`
+  display: block;
+  margin-bottom: 3px;
+`;
+
+const LastMessageText = styled(Text)`
+  font-size: 0.813rem;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  color: ${COLORS.COOL_GREY};
 `;
 
 const TimeColumn = styled.div`
@@ -88,4 +71,18 @@ const TimeColumn = styled.div`
   align-items: center;
   width: 29px;
   gap: 0.375rem;
+`;
+
+const TimeText = styled(Text)`
+  opacity: 0.4;
+  font-size: 0.688rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-align: right;
+  color: ${COLORS.CHARCOAL_GREY2};
+`;
+
+const UnreadMessageCountText = styled(Text)`
+  font-size: 0.625rem;
+  letter-spacing: -0.08px;
 `;

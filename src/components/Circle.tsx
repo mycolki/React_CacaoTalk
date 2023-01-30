@@ -1,17 +1,23 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
 interface CircleProps {
-  children: ReactNode;
   size: string;
   padding?: string;
   bgColor?: keyof typeof COLORS;
 }
 
-function Circle({ children, size, padding, bgColor }: CircleProps) {
+function Circle({ size, padding, bgColor = 'WHITE', children }: PropsWithChildren<CircleProps>) {
   return (
-    <Wrapper size={size} padding={padding} bgColor={bgColor ? COLORS[bgColor] : undefined}>
+    <Wrapper
+      style={{
+        padding,
+        width: size,
+        height: size,
+        backgroundColor: COLORS[bgColor],
+      }}
+    >
       {children}
     </Wrapper>
   );
@@ -19,13 +25,9 @@ function Circle({ children, size, padding, bgColor }: CircleProps) {
 
 export default Circle;
 
-const Wrapper = styled.div<{ size: string; padding?: string; bgColor?: string }>`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
   border-radius: 50%;
-  ${({ padding }) => padding && `padding: ${padding}`};
-  ${({ bgColor }) => bgColor && `background-color: ${bgColor}`};
 `;

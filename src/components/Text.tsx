@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { PropsWithChildren } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
@@ -28,14 +28,20 @@ const textStyles = { textStyle1, textStyle2, textStyle4, textStyle3 };
 
 type TextStyle = keyof typeof textStyles;
 
-interface TextProps extends HTMLAttributes<HTMLSpanElement> {
+interface TextProps {
   textStyle?: TextStyle;
   color?: keyof typeof COLORS;
 }
 
-function Text({ children, textStyle, color = 'BLACK', ...rest }: TextProps) {
+function Text({ textStyle, color = 'BLACK', children, ...rest }: PropsWithChildren<TextProps>) {
   return (
-    <StyledText textStyle={textStyle ? textStyles[textStyle] : undefined} color={COLORS[color]} {...rest}>
+    <StyledText
+      textStyle={textStyle ? textStyles[textStyle] : undefined}
+      style={{
+        color: COLORS[color],
+      }}
+      {...rest}
+    >
       {children}
     </StyledText>
   );
@@ -43,12 +49,11 @@ function Text({ children, textStyle, color = 'BLACK', ...rest }: TextProps) {
 
 export default Text;
 
-const StyledText = styled.span<{ textStyle?: SerializedStyles; color: string }>`
+const StyledText = styled.span<{ textStyle?: SerializedStyles }>`
   font-size: 1rem;
   letter-spacing: -0.2px;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   ${({ textStyle }) => textStyle};
-  color: ${({ color }) => color};
 `;

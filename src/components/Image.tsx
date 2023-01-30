@@ -1,18 +1,22 @@
-import styled from '@emotion/styled';
-
 interface ImageProps {
   src: string;
   alt: string;
   size: number;
-  borderRadius?: number;
+  borderRadius?: string;
 }
 
 function Image({ src, alt, size, borderRadius }: ImageProps) {
-  return <StyledImage src={src} alt={alt} width={size} height={size} borderRadius={borderRadius} />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      style={{
+        borderRadius: borderRadius ?? 0,
+      }}
+    />
+  );
 }
 
 export default Image;
-
-const StyledImage = styled.img<{ borderRadius?: number }>`
-  border-radius: ${({ borderRadius }) => (borderRadius ? `${borderRadius}px` : 0)};
-`;

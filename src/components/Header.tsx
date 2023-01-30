@@ -11,38 +11,36 @@ interface HeaderProps {
 
 function Header({ left, center, right, bgColor }: HeaderProps) {
   return (
-    <Container bgColor={bgColor ? COLORS[bgColor] : undefined}>
-      <Column1>{left}</Column1>
-      <Column2>{center}</Column2>
-      <Column3>{right}</Column3>
+    <Container style={{ backgroundColor: bgColor ? COLORS[bgColor] : undefined }}>
+      <div className="column">{left}</div>
+      <div className="column">{center}</div>
+      <div className="column">{right}</div>
     </Container>
   );
 }
 
 export default Header;
 
-const Container = styled.div<{ bgColor?: string }>`
+const Container = styled.div`
   display: flex;
   align-items: center;
   height: 44px;
-  padding: 8px 11px 9px 12px;
-  ${({ bgColor }) => bgColor && `background-color:${bgColor}`}
-`;
+  padding: 8px 12px 10px;
 
-const Column1 = styled.div`
-  display: flex;
-  width: 33%;
-  justify-content: flex-start;
-`;
+  .column {
+    display: flex;
+    width: 33%;
+  }
 
-const Column2 = styled.div`
-  display: flex;
-  width: 33%;
-  justify-content: center;
-`;
+  & :nth-child(1) {
+    justify-content: flex-start;
+  }
 
-const Column3 = styled.div`
-  display: flex;
-  width: 33%;
-  justify-content: flex-end;
+  & :nth-child(2) {
+    justify-content: center;
+  }
+
+  & :nth-child(3) {
+    justify-content: flex-end;
+  }
 `;

@@ -1,17 +1,13 @@
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
+
 import Text from './Text';
 
 function HorizontalDivider({ text }: { text: string }) {
   return (
     <Container>
       <Divider />
-      <Text
-        color="CHARCOAL_GREY2"
-        style={{ margin: '0 10px', fontSize: '0.75rem', fontWeight: '500', letterSpacing: 'normal', opacity: '0.4' }}
-      >
-        {text}
-      </Text>
+      <CenterText color="CHARCOAL_GREY2">{text}</CenterText>
       <Divider />
     </Container>
   );
@@ -26,7 +22,15 @@ const Container = styled.div`
 `;
 
 const Divider = styled.div`
-  width: 120px;
+  width: 7.5rem;
   height: 1px;
   background-color: ${COLORS.PALE_LILAC};
+`;
+
+const CenterText = styled(Text)`
+  margin: 0 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  opacity: 0.4;
 `;

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
+
 import Header from 'components/Header';
 import Text from 'components/Text';
 import Button from 'components/Button';
@@ -29,14 +30,14 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
         </Text>
       }
       right={
-        <RightIcons>
+        <Buttons>
           <Button>
             <UploadIcon />
           </Button>
           <Button>
             <SearchIcon />
           </Button>
-        </RightIcons>
+        </Buttons>
       }
       bgColor="PURPLE"
     />
@@ -45,8 +46,11 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
 
 export default ChatRoomHeader;
 
-const RightIcons = styled.div`
+const Buttons = styled.div`
   display: flex;
   align-items: center;
-  gap: 17px;
+
+  button:first-child {
+    margin-right: 17px;
+  }
 `;

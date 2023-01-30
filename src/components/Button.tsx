@@ -1,14 +1,24 @@
-import { ButtonHTMLAttributes } from 'react';
+import { MouseEventHandler, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
+  type?: 'submit' | 'reset' | 'button';
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
   bgColor?: keyof typeof COLORS;
 }
 
-function Button({ onClick, children, bgColor, type = 'button', ...rest }: ButtonProps) {
+function Button({ type = 'button', onClick, disabled = false, bgColor, children }: PropsWithChildren<ButtonProps>) {
   return (
-    <ButtonWrapper type={type} onClick={onClick} bgColor={bgColor ? COLORS[bgColor] : undefined} {...rest}>
+    <ButtonWrapper
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        backgroundColor: bgColor ? COLORS[bgColor] : 'transparent',
+      }}
+    >
       {children}
     </ButtonWrapper>
   );
@@ -16,9 +26,9 @@ function Button({ onClick, children, bgColor, type = 'button', ...rest }: Button
 
 export default Button;
 
-const ButtonWrapper = styled.button<{ bgColor?: string }>`
+const ButtonWrapper = styled.button`
+  padding: 0;
   border: 0;
-  background-color: ${({ bgColor }) => bgColor ?? 'transparent'};
   cursor: pointer;
-  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 `;
