@@ -1,9 +1,12 @@
+import { useQuery } from 'react-query';
 import { useLocation, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
+import useUpdateChatReadCount from 'hooks/useUpdateChatReadCount';
+import { formatDate } from 'utils/formatDate';
+import { getRoom } from 'handlers';
 
 import { ChatMessages, ChatRoomHeader } from 'components/ChatRoom';
-import useUpdateChatReadCount from 'hooks/useUpdateChatReadCount';
 
 interface Location {
   state: {
@@ -17,10 +20,27 @@ function ChatRoomPage() {
 
   useUpdateChatReadCount({ roomId, hasUnreadMessage: state.hasUnreadMessage });
 
+  const { data: room } = useQuery({
+    queryKey: ['room', roomId],
+    queryFn: () => getRoom(roomId), // 변경:
+    enabled: Boolean(roomId),
+    select: data => ({
+      ...data,
+      messages: data.messages.map(message => ({
+        ...message,
+        timeStamp: formatDate(message.timeStamp, 'HH:mm'),
+      })),
+    }),
+  });
+
+  if (!room) {
+    return null;
+  }
+
   return (
     <Container>
-      <ChatRoomHeader sender="장만월 사장님" />
-      {roomId && <ChatMessages roomId={roomId} />}
+      <ChatRoomHeader sender={room.member.name} />
+      <ChatMessages messages={room.messages} />
     </Container>
   );
 }

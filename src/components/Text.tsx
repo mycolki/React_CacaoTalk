@@ -25,7 +25,6 @@ const textStyle4 = css`
 `;
 
 const textStyles = { textStyle1, textStyle2, textStyle4, textStyle3 };
-
 type TextStyle = keyof typeof textStyles;
 
 interface TextProps {

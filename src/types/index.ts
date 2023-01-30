@@ -12,13 +12,17 @@ export interface Chat {
   member: Member;
 }
 
-interface Message {
+interface Image {
+  imgUrl: string;
+  description: string;
+}
+export interface Message {
   id: string;
   timeStamp: string;
   type: 'text' | 'image';
   sender: Member;
   text?: string;
-  imgUrl?: string;
+  img?: Image;
 }
 
 export interface Room {

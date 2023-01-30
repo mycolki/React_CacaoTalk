@@ -1,6 +1,6 @@
 import produce from 'immer';
-import { getChatsData, getRoomData } from 'api';
-import { Chat, Room } from 'types';
+import { getChatsData, getRoomData, getUserData } from 'api';
+import { Chat, Member, Room } from 'types';
 
 export async function getChats(): Promise<Chat[]> {
   const chatSession = window.sessionStorage.getItem('chats');
@@ -33,7 +33,7 @@ export async function updateChatReadCount(roomId: string) {
   };
 }
 
-export async function getRoom(roomId: string): Promise<Room> {
+export async function getRoom(roomId?: string): Promise<Room> {
   const roomSession = window.sessionStorage.getItem(`roomId:${roomId}`);
 
   if (roomSession) {
@@ -42,6 +42,19 @@ export async function getRoom(roomId: string): Promise<Room> {
 
   const room = await getRoomData(roomId);
   window.sessionStorage.setItem(`roomId:${roomId}`, JSON.stringify(room));
-  console.log(room);
+
   return room;
+}
+
+export async function getUser(): Promise<Member> {
+  const userSession = window.sessionStorage.getItem('user');
+
+  if (userSession) {
+    return JSON.parse(userSession);
+  }
+
+  const user = await getUserData();
+  window.sessionStorage.setItem('user', JSON.stringify(user));
+
+  return user;
 }

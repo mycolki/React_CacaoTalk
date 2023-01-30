@@ -1,10 +1,37 @@
-import { useQuery } from 'react-query';
-import { getRoom } from 'handlers';
+import styled from '@emotion/styled';
+import useUser from 'hooks/useUser';
+import { Message } from 'types';
 
-function ChatMessages({ roomId }: { roomId: string }) {
-  const { data } = useQuery({ queryKey: ['room', roomId], queryFn: () => getRoom(roomId) });
+import Image from 'components/Image';
+import MessageField from 'components/MessageField';
+import MessageRow from 'components/MessageRow';
 
-  return <ul>dd</ul>;
+function ChatMessages({ messages }: { messages: Message[] }) {
+  const user = useUser();
+
+  return (
+    <Messages>
+      {messages.map(({ id, sender, timeStamp, type, img, text }) => {
+        const isUser = sender.id === user?.id;
+        const align = isUser ? 'right' : 'left';
+        const senderType = isUser ? 'user' : 'member';
+
+        return (
+          <MessageRow key={id} align={align} time={timeStamp}>
+            {type === 'text' ? (
+              <MessageField senderType={senderType} message={text ?? ''} />
+            ) : (
+              <Image src={img?.imgUrl ?? ''} alt={img?.description ?? ''} size={100} borderRadius="50px" />
+            )}
+          </MessageRow>
+        );
+      })}
+    </Messages>
+  );
 }
 
 export default ChatMessages;
+
+const Messages = styled.ul`
+  padding: 20px 16px;
+`;
