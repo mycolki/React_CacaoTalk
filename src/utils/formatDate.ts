@@ -6,7 +6,7 @@ dayjs.extend(utc).locale('ko');
 
 type FormatType = 'HH:mm' | 'YYYY년 MM월 DD일' | 'MM월 DD일' | 'ddd' | 'YYYY.MM.DD';
 
-export function formatDateToLocale(date: string, formatType: FormatType) {
+export function formatDateToLocale(date: string, formatType?: FormatType) {
   return dayjs(date).format(formatType);
 }
 
