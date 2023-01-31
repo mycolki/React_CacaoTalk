@@ -22,7 +22,6 @@ function Header({ left, center, right, bgColor }: HeaderProps) {
 export default Header;
 
 const Container = styled.div`
-  position: fixed;
   display: flex;
   align-items: center;
   width: var(--app-width);

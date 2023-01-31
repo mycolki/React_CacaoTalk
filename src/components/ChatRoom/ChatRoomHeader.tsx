@@ -8,9 +8,10 @@ import { StyledText3 } from 'components/TextField';
 
 interface ChatRoomHeaderProps {
   sender: string;
+  onUploadButtonClick: () => void;
 }
 
-function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
+function ChatRoomHeader({ sender, onUploadButtonClick }: ChatRoomHeaderProps) {
   const navigate = useNavigate();
 
   return (
@@ -27,7 +28,7 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
       center={<StyledText3 color="WHITE">{sender}</StyledText3>}
       right={
         <Buttons>
-          <Button>
+          <Button onClick={onUploadButtonClick}>
             <UploadIcon />
           </Button>
           <Button>

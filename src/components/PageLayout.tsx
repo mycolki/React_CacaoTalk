@@ -16,10 +16,10 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   height: calc(var(--app-height, 100vh));
+  background-color: ${COLORS.PURPLE_OPACITY40};
 `;
 
 const Layout = styled.div`
   width: var(--app-width);
   height: 100%;
-  border: 1px solid ${COLORS.PALE_LILAC};
 `;
