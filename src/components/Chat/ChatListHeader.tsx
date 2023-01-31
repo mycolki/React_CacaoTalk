@@ -1,7 +1,7 @@
 import Button from 'components/Button';
 import Header from 'components/Header';
-import Text from 'components/Text';
 import { MenuIcon, ProfileIcon } from 'components/Icon';
+import { StyledText3 } from 'components/TextField';
 
 function ChatListHeader() {
   return (
@@ -11,11 +11,7 @@ function ChatListHeader() {
           <MenuIcon />
         </Button>
       }
-      center={
-        <Text textStyle="textStyle3" color="WHITE">
-          채팅
-        </Text>
-      }
+      center={<StyledText3 color="WHITE">채팅</StyledText3>}
       right={
         <Button>
           <ProfileIcon />

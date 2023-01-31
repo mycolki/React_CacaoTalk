@@ -1,8 +1,8 @@
 export * as Icon from './Icon';
 export * as Chat from './Chat';
 export * as ChatRoom from './ChatRoom';
+export * as TextField from './TextField';
 export { default as PageLayout } from './PageLayout';
-export { default as Text } from './Text';
 export { default as Header } from './Header';
 export { default as Image } from './Image';
 export { default as Circle } from './Circle';

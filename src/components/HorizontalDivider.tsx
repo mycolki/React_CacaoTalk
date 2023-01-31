@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-import Text from './Text';
+import { Text } from './TextField';
 
 function HorizontalDivider({ text }: { text: string }) {
   return (

@@ -20,15 +20,39 @@ function Global() {
     <EmotionGlobal
       styles={css`
         ${emotionReset}
-        :root {
+        html {
           --app-height: 100%;
           --app-width: 375px;
           --bottom-message-form: 86px;
           --header: 44px;
         }
+
         * {
           box-sizing: border-box;
         }
+
+        @font-face {
+          font-family: AppleSDGothicNeo;
+          src: local(AppleSDGothicNeoB), url(./font/AppleSDGothicNeoB.ttf) format('truetype');
+          font-weight: bold;
+          font-style: normal;
+          font-stretch: normal;
+        }
+        @font-face {
+          font-family: AppleSDGothicNeo;
+          src: local(AppleSDGothicNeoSB), url(./font/AppleSDGothicNeoSB.ttf) format('truetype');
+          font-weight: 600;
+          font-style: normal;
+          font-stretch: normal;
+        }
+        @font-face {
+          font-family: AppleSDGothicNeo;
+          src: local(AppleSDGothicNeoM), url(./font/AppleSDGothicNeoM.ttf) format('truetype');
+          font-weight: 500;
+          font-style: normal;
+          font-stretch: normal;
+        }
+
         body {
           height: calc(var(--app-height, 100vh));
           font-family: AppleSDGothicNeo;

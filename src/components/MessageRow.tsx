@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
-import Text from './Text';
+import { Text } from './TextField';
 
 type Align = 'left' | 'right';
 

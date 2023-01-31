@@ -4,9 +4,9 @@ import COLORS from 'style/palette';
 import { formatLastMessageDate } from 'utils/manipulateDate';
 import { Chat } from 'types';
 
-import Text from 'components/Text';
 import Circle from 'components/Circle';
 import Image from 'components/Image';
+import { Text, StyledText4 } from 'components/TextField';
 
 interface ChatListRowProps {
   chat: Chat;
@@ -27,9 +27,7 @@ function ChatListRow({ chat: { roomId, member, lastMessage, unReadCount } }: Cha
     >
       <Image src={member.profileImgUrl} alt={member.name} size={56} borderRadius="28px" />
       <MessageColumn>
-        <MemberText textStyle="textStyle4" color="CHARCOAL_GREY">
-          {member.name}
-        </MemberText>
+        <MemberText color="CHARCOAL_GREY">{member.name}</MemberText>
         <LastMessageText color="COOL_GREY">
           {lastMessage.type === 'text' ? lastMessage.text : '사진을 보냈습니다.'}
         </LastMessageText>
@@ -66,7 +64,7 @@ const MessageColumn = styled.div`
   white-space: nowrap;
 `;
 
-const MemberText = styled(Text)`
+const MemberText = styled(StyledText4)`
   display: block;
   margin-bottom: 3px;
 `;

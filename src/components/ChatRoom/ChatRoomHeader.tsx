@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import Header from 'components/Header';
-import Text from 'components/Text';
 import Button from 'components/Button';
 import { BackIcon, SearchIcon, UploadIcon } from 'components/Icon';
+import { StyledText3 } from 'components/TextField';
 
 interface ChatRoomHeaderProps {
   sender: string;
@@ -24,11 +24,7 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
           <BackIcon />
         </Button>
       }
-      center={
-        <Text textStyle="textStyle3" color="WHITE">
-          {sender}
-        </Text>
-      }
+      center={<StyledText3 color="WHITE">{sender}</StyledText3>}
       right={
         <Buttons>
           <Button>

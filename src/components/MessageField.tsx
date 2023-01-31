@@ -2,7 +2,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-import Text from 'components/Text';
+import { StyledText2 } from './TextField';
 
 const user = css`
   background-color: ${COLORS.PURPLE};
@@ -24,17 +24,15 @@ interface ChatMessageProps {
 
 function MessageField({ senderType, message }: ChatMessageProps) {
   return (
-    <TextWrapper boxStyle={sender[senderType]}>
-      <Text textStyle="textStyle2" color={senderType === 'user' ? 'WHITE' : 'CHARCOAL_GREY2'}>
-        {message}
-      </Text>
-    </TextWrapper>
+    <Wrapper boxStyle={sender[senderType]}>
+      <StyledText2 color={senderType === 'user' ? 'WHITE' : 'CHARCOAL_GREY2'}>{message}</StyledText2>
+    </Wrapper>
   );
 }
 
 export default MessageField;
 
-const TextWrapper = styled.div<{ boxStyle: SerializedStyles }>`
+const Wrapper = styled.div<{ boxStyle: SerializedStyles }>`
   max-width: 250px;
   padding: 12px;
   border-radius: 12px;
