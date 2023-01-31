@@ -1,6 +1,7 @@
 import produce from 'immer';
 import { getChatsData } from 'api';
 import { Chat, Message } from 'types';
+import { orderBy, sortBy } from 'lodash-es';
 
 export async function getChats(): Promise<Chat[]> {
   const chatSession = window.sessionStorage.getItem('chats');
@@ -58,8 +59,8 @@ export function putLastMessage(roomId: string, lastMessage: Message) {
         target.lastMessage = lastMessage;
       }
     });
-
-    window.sessionStorage.setItem('chats', JSON.stringify(updatedChats));
+    const sortedChats = orderBy(updatedChats, chat => chat.lastMessage.timeStamp, ['desc']);
+    window.sessionStorage.setItem('chats', JSON.stringify(sortedChats));
 
     resolve(updatedChats);
   });
