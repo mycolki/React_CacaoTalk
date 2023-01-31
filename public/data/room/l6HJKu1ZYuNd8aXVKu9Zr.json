@@ -24,11 +24,7 @@
       "id": "sl3RrmEhu9JpnBsWE5vPJ",
       "timeStamp": "2023-01-30T00:10:31Z",
       "type": "text",
-      "sender": {
-        "id": "fullmoon@kakao.com",
-        "name": "장만월 사장님",
-        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/janFullMoon.png"
-      },
+      "sender": "fullmoon@kakao.com",
       "text": "어딘데 출근 안하니? 죽고싶니?"
     }
   ]

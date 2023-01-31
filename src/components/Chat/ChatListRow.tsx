@@ -1,22 +1,20 @@
-import { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
+import { formatLastMessageDate } from 'utils/formatDate';
+import { Chat } from 'types';
 
 import Text from 'components/Text';
 import Circle from 'components/Circle';
-import { useNavigate } from 'react-router-dom';
+import Image from 'components/Image';
 
 interface ChatListRowProps {
-  roomId: string;
-  image: ReactNode;
-  sender: ReactNode;
-  lastMessage: string;
-  unReadCount: number;
-  timeStamp: string;
+  chat: Chat;
 }
 
-function ChatListRow({ roomId, image: imageColumn, sender, lastMessage, unReadCount, timeStamp }: ChatListRowProps) {
+function ChatListRow({ chat: { roomId, member, lastMessage, unReadCount } }: ChatListRowProps) {
   const naviagte = useNavigate();
+
   return (
     <ListRow
       onClick={() =>
@@ -27,17 +25,18 @@ function ChatListRow({ roomId, image: imageColumn, sender, lastMessage, unReadCo
         })
       }
     >
-      {imageColumn}
-
+      <Image src={member.profileImgUrl} alt={member.name} size={56} borderRadius="28px" />
       <MessageColumn>
-        <SenderText textStyle="textStyle4" color="CHARCOAL_GREY">
-          {sender}
-        </SenderText>
-        <LastMessageText color="COOL_GREY">{lastMessage}</LastMessageText>
+        <MemberText textStyle="textStyle4" color="CHARCOAL_GREY">
+          {member.name}
+        </MemberText>
+        <LastMessageText color="COOL_GREY">
+          {lastMessage.type === 'text' ? lastMessage.text : '사진을 보냈습니다.'}
+        </LastMessageText>
       </MessageColumn>
 
       <TimeColumn>
-        <TimeText color="CHARCOAL_GREY2">{timeStamp}</TimeText>
+        <TimeText color="CHARCOAL_GREY2">{formatLastMessageDate(lastMessage.timeStamp)}</TimeText>
         {unReadCount > 0 && (
           <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
             <UnReadCountText color="WHITE">{unReadCount}</UnReadCountText>
@@ -67,7 +66,7 @@ const MessageColumn = styled.div`
   white-space: nowrap;
 `;
 
-const SenderText = styled(Text)`
+const MemberText = styled(Text)`
   display: block;
   margin-bottom: 3px;
 `;

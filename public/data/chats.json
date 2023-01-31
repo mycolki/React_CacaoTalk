@@ -1,8 +1,13 @@
 [
   {
     "roomId": "l6HJKu1ZYuNd8aXVKu9Zr",
-    "lastMessage": "어딘데 출근 안하니, 죽고싶니?",
-    "lastTimeStamp": "2023-01-30T00:10:31Z",
+    "lastMessage": {
+      "id": "sl3RrmEhu9JpnBsWE5vPJ",
+      "timeStamp": "2023-01-30T00:10:31Z",
+      "type": "text",
+      "sender": "fullmoon@kakao.com",
+      "text": "어딘데 출근 안하니? 죽고싶니?"
+    },
     "unReadCount": 2,
     "member": {
       "id": "fullmoon@kakao.com",
@@ -12,8 +17,17 @@
   },
   {
     "roomId": "uZJBGRyi9jph1y0781jLj",
-    "lastMessage": "오시는 길에 와인 몇병만 사다주세요.",
-    "lastTimeStamp": "2023-01-30T00:00:31Z",
+    "lastMessage": {
+      "id": "aMth1cMFkNTjX_EtmMANr",
+      "timeStamp": "2023-01-30T00:00:31Z",
+      "type": "text",
+      "sender": {
+        "id": "sinjung@kakao.com",
+        "name": "신정근 바텐더",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
+      },
+      "text": "오시는 길에 와인 몇병만 사다주세요."
+    },
     "unReadCount": 0,
     "member": {
       "id": "sinjung@kakao.com",
@@ -23,8 +37,17 @@
   },
   {
     "roomId": "Nlf86LKUIDt9O7Twl5Y5y",
-    "lastMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지금 급한 일이 생겼어요.",
-    "lastTimeStamp": "2023-01-29T00:10:31Z",
+    "lastMessage": {
+      "id": "_VM6Q7hOSMKf4PUkwa_QS",
+      "timeStamp": "2023-01-29T00:10:31Z",
+      "type": "text",
+      "sender": {
+        "id": "leedoc@kakao.com",
+        "name": "이미라 의사",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/LeeMiRa.png"
+      },
+      "text": "휴가 잘 보내고 계신가요? 다름이 아니라 지금 급한 일이 생겼어요."
+    },
     "unReadCount": 0,
     "member": {
       "id": "leedoc@kakao.com",
@@ -34,8 +57,17 @@
   },
   {
     "roomId": "vdNIrTmK-_NiGq5aUleRY",
-    "lastMessage": "아 휴가셨군요. 약속은 다음으로 미루시죠!",
-    "lastTimeStamp": "2023-01-27T00:19:31Z",
+    "lastMessage": {
+      "id": "_VM6Q7hOSMKf4PUkwa_QS",
+      "timeStamp": "2023-01-27T00:19:31Z",
+      "type": "text",
+      "sender": {
+        "id": "jingoo@kakao.com",
+        "name": "구찬성 지배인",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
+      },
+      "text": "휴가 잘 보내고 계신가요? 다름이 아니라 지금 급한 일이 생겼어요."
+    },
     "unReadCount": 0,
     "member": {
       "id": "jingoo@kakao.com",
@@ -45,8 +77,17 @@
   },
   {
     "roomId": "CjHPnzqe_zrmLFhutmE8t",
-    "lastMessage": "휴가에서 언제 돌아오시는지요. 돌아오시면 연락 부탁드립니다.",
-    "lastTimeStamp": "2023-01-28T00:10:31Z",
+    "lastMessage": {
+      "id": "_iZt36WMDrxdMjByzuIq3",
+      "timeStamp": "2023-01-28T00:10:31Z",
+      "type": "text",
+      "sender": {
+        "id": "no@kakao.com",
+        "name": "노준석 총지배인",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/noJunSuck.png"
+      },
+      "text": "휴가에서 언제 돌아오시는지요. 돌아오시면 연락 부탁드립니다."
+    },
     "unReadCount": 0,
     "member": {
       "id": "no@kakao.com",
@@ -56,8 +97,17 @@
   },
   {
     "roomId": "Eddy9gdxfIN8-qgiNNNuZ",
-    "lastMessage": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ",
-    "lastTimeStamp": "2023-01-23T05:10:31Z",
+    "lastMessage": {
+      "id": "zgv00JOebajFKuUJTiprO",
+      "timeStamp": "2023-01-23T05:10:31Z",
+      "type": "text",
+      "sender": {
+        "id": "yuna@kakao.com",
+        "name": "김유나 인턴",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/kinYuNa.png"
+      },
+      "text": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ"
+    },
     "unReadCount": 0,
     "member": {
       "id": "yuna@kakao.com",
@@ -67,8 +117,17 @@
   },
   {
     "roomId": "e1bCDGTa6sFvxIstTjuVF",
-    "lastMessage": "술먹자",
-    "lastTimeStamp": "2022-12-20T07:22:31Z",
+    "lastMessage": {
+      "id": "shCneaNVzICMcgv0BsqLu",
+      "timeStamp": "2022-12-20T07:22:31Z",
+      "type": "text",
+      "sender": {
+        "id": "koohyunmo@kakao.com",
+        "name": "구현모",
+        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
+      },
+      "text": "술먹자"
+    },
     "unReadCount": 0,
     "member": {
       "id": "koohyunmo@kakao.com",

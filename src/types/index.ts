@@ -4,25 +4,25 @@ export interface Member {
   profileImgUrl: string;
 }
 
-export interface Chat {
-  roomId: string;
-  lastMessage: string;
-  lastTimeStamp: string;
-  unReadCount: number;
-  member: Member;
-}
-
 export interface Image {
   imgUrl: string;
   description: string;
 }
+
 export interface Message {
   id: string;
   timeStamp: string;
-  type: 'text' | 'image';
   sender: Member;
+  type: 'text' | 'image';
   text?: string;
   img?: Image;
+}
+
+export interface Chat {
+  roomId: string;
+  lastMessage: Message;
+  unReadCount: number;
+  member: Member;
 }
 
 export interface Room {

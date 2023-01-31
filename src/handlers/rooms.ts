@@ -17,7 +17,7 @@ export async function getRoom(roomId?: string): Promise<Room> {
 }
 
 export function postMessage(roomId: string, message: Omit<Message, 'id' | 'timeStamp'>) {
-  return new Promise<Room>((resolve, reject) => {
+  return new Promise<Message>((resolve, reject) => {
     const roomSession = window.sessionStorage.getItem(`roomId:${roomId}`);
 
     if (!roomSession) {
@@ -26,9 +26,10 @@ export function postMessage(roomId: string, message: Omit<Message, 'id' | 'timeS
     }
 
     const room: Room = JSON.parse(roomSession);
-    room.messages.push({ ...message, id: nanoid(), timeStamp: formatDateToUTC() });
+    const newMessage = { ...message, id: nanoid(), timeStamp: formatDateToUTC() };
+    room.messages.push(newMessage);
     window.sessionStorage.setItem(`roomId:${roomId}`, JSON.stringify(room));
 
-    resolve(room);
+    resolve(newMessage);
   });
 }

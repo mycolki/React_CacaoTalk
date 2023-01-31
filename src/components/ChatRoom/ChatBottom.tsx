@@ -1,16 +1,22 @@
 import { useMutation } from 'react-query';
 import styled from '@emotion/styled';
 import { postMessage } from 'handlers/rooms';
-import { Member, Message, Room } from 'types';
+import { putLastMessage } from 'handlers/chats';
+import { Chat, Member, Message } from 'types';
 import queryClient from 'query';
 
 import MessageForm from 'components/MessageForm';
 
 function ChatBottom({ roomId, user }: { roomId: string; user: Member }) {
-  const { mutate: sendMessage } = useMutation<Room, Error, Omit<Message, 'id' | 'timeStamp'>>({
+  const { mutate: updateLastMessage } = useMutation<Chat[], Error, Message>({
+    mutationFn: lastMessage => putLastMessage(roomId, lastMessage),
+  });
+
+  const { mutate: sendMessage } = useMutation<Message, Error, Omit<Message, 'id' | 'timeStamp'>>({
     mutationFn: message => postMessage(roomId, message),
-    onSuccess: room => {
-      queryClient.setQueryData(['room', roomId], room);
+    onSuccess: newMessage => {
+      queryClient.invalidateQueries(['room', roomId]);
+      updateLastMessage(newMessage);
     },
   });
 
