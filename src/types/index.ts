@@ -1,11 +1,11 @@
 export interface Member {
   id: string;
   name: string;
-  profileImgUrl: string;
+  profileImageUrl: string;
 }
 
 export interface Image {
-  imgUrl: string;
+  imageUrl: string;
   description: string;
 }
 
@@ -15,7 +15,7 @@ export interface Message {
   sender: Member;
   type: 'text' | 'image';
   text?: string;
-  img?: Image;
+  image?: Image;
 }
 
 export interface Chat {

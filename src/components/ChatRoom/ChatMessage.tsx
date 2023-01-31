@@ -14,7 +14,7 @@ interface ChatMessageProps {
 }
 
 function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessageProps) {
-  const { timeStamp, type, img, text } = message;
+  const { timeStamp, type, image, text } = message;
 
   return (
     <>
@@ -24,7 +24,7 @@ function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessag
         {type === 'text' ? (
           <MessageField senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
         ) : (
-          <Image src={img?.imgUrl ?? ''} alt={img?.description ?? ''} size={100} borderRadius="50px" />
+          <Image src={image?.imageUrl ?? ''} alt={image?.description ?? ''} size={150} borderRadius="10px" />
         )}
       </MessageRow>
     </>

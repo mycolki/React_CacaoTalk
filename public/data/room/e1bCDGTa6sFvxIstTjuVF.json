@@ -3,7 +3,7 @@
   "member": {
     "id": "koohyunmo@kakao.com",
     "name": "구현모",
-    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
   },
   "messages": [
     {
@@ -13,7 +13,7 @@
       "sender": {
         "id": "koohyunmo@kakao.com",
         "name": "구현모",
-        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
       },
       "text": "술먹자"
     }

@@ -1,56 +1,43 @@
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import COLORS from 'style/palette';
-import { Image as ImageType } from 'types';
+import { useSendMessage } from 'hooks';
+import { useState } from 'react';
+import { Member } from 'types';
 
-import Button from './Button';
-import Image from './Image';
+import HorizontalImages from './HorizontalImages';
 
 interface GalleryProps {
-  images: ImageType[];
-  onClick: (image: ImageType) => void;
+  roomId: string;
+  user: Member;
 }
 
-function Gallery({ images, onClick }: GalleryProps) {
+function Gallery({ roomId, user }: GalleryProps) {
+  const [localImages, setLocalImages] = useState(() => getLocalImages());
+
+  const sendMessage = useSendMessage(roomId);
+
   return (
-    <Container>
-      <ImagesWrapper>
-        {images.map(image => (
-          <Button onClick={() => onClick(image)}>
-            <Image src={image.imgUrl} alt={image.description} size={46} borderRadius="6px" />
-          </Button>
-        ))}
-      </ImagesWrapper>
-    </Container>
+    <HorizontalImages
+      images={localImages}
+      onClick={image => {
+        sendMessage({
+          type: 'image',
+          image,
+          sender: user,
+        });
+        setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
+      }}
+    />
   );
 }
 
 export default Gallery;
 
-const slideDown = keyframes`
-  0% {
-    height:0
-  }
-  100% {
-    height:73.5px
-  }
-`;
+function getLocalImages() {
+  const localImages = Array(7)
+    .fill(null)
+    .map((_, i) => ({
+      imageUrl: `/asset/img-shot-${i + 1}.png`,
+      description: `img-shot-${i + 1}`,
+    }));
 
-const Container = styled.div`
-  width: var(--app-width);
-  background-color: ${COLORS.PURPLE};
-  padding: 12px 0px 12px 18px;
-  animation-name: ${slideDown};
-  animation-duration: 100ms;
-  animation-timing-function: ease-out;
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
-`;
-
-const ImagesWrapper = styled.div`
-  display: flex;
-  overflow-x: auto;
-  overflow: hidden;
-  white-space: nowrap;
-  gap: 10px;
-`;
+  return localImages;
+}

@@ -13,3 +13,4 @@ export { default as Button } from './Button';
 export { default as Spacing } from './Spacing';
 export { default as HorizontalDivider } from './HorizontalDivider';
 export { default as Gallery } from './Gallery';
+export { default as HorizontalImages } from './HorizontalImages';

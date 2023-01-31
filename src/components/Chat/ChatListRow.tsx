@@ -25,22 +25,23 @@ function ChatListRow({ chat: { roomId, member, lastMessage, unReadCount } }: Cha
         })
       }
     >
-      <Image src={member.profileImgUrl} alt={member.name} size={56} borderRadius="28px" />
-      <MessageColumn>
+      <Image src={member.profileImageUrl} alt={member.name} size={56} borderRadius="28px" />
+
+      <Message>
         <MemberText color="CHARCOAL_GREY">{member.name}</MemberText>
         <LastMessageText color="COOL_GREY">
           {lastMessage.type === 'text' ? lastMessage.text : '사진을 보냈습니다.'}
         </LastMessageText>
-      </MessageColumn>
+      </Message>
 
-      <TimeColumn>
+      <Time>
         <TimeText color="CHARCOAL_GREY2">{formatLastMessageDate(lastMessage.timeStamp)}</TimeText>
         {unReadCount > 0 && (
           <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
             <UnReadCountText color="WHITE">{unReadCount}</UnReadCountText>
           </Circle>
         )}
-      </TimeColumn>
+      </Time>
     </ListRow>
   );
 }
@@ -57,7 +58,7 @@ const ListRow = styled.li`
   background-color: ${COLORS.WHITE};
 `;
 
-const MessageColumn = styled.div`
+const Message = styled.div`
   width: 230px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -75,7 +76,7 @@ const LastMessageText = styled(Text)`
   letter-spacing: -0.1px;
 `;
 
-const TimeColumn = styled.div`
+const Time = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,4 +96,6 @@ const TimeText = styled(Text)`
 const UnReadCountText = styled(Text)`
   font-size: 0.625rem;
   letter-spacing: -0.08px;
+  font-weight: bold;
+  text-align: center;
 `;

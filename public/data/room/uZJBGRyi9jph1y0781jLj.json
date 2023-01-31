@@ -3,7 +3,7 @@
   "member": {
     "id": "sinjung@kakao.com",
     "name": "신정근 바텐더",
-    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
   },
   "messages": [
     {
@@ -13,7 +13,7 @@
       "sender": {
         "id": "sinjung@kakao.com",
         "name": "신정근 바텐더",
-        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
       },
       "text": "오시는 길에 와인 몇병만 사다주세요."
     }

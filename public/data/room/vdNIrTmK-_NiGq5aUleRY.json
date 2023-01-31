@@ -3,7 +3,7 @@
   "member": {
     "id": "jingoo@kakao.com",
     "name": "구찬성 지배인",
-    "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
   },
   "messages": [
     {
@@ -13,7 +13,7 @@
       "sender": {
         "id": "jingoo@kakao.com",
         "name": "구찬성 지배인",
-        "profileImgUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
       },
       "text": "휴가 잘 보내고 계신가요? 다름이 아니라 지금 급한 일이 생겼어요."
     }
