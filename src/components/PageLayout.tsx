@@ -19,7 +19,7 @@ const Background = styled.div`
 `;
 
 const Layout = styled.div`
-  width: 375px;
+  width: var(--app-width);
   height: 100%;
   border: 1px solid ${COLORS.PALE_LILAC};
 `;

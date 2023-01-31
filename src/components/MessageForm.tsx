@@ -19,6 +19,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
         onSubmit={e => {
           e.preventDefault();
           onSubmit(message);
+          setMessage('');
         }}
       >
         <Input value={message} onChange={e => setMessage(e.target.value)} placeholder="메시지를 입력하세요" />
@@ -35,7 +36,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
 export default memo(MessageForm);
 
 const Container = styled.div`
-  padding: 16px;
+  padding: 20px 16px;
 `;
 
 const Form = styled.form`
@@ -50,8 +51,9 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
+  width: 281px;
   height: 50px;
-  padding: 17px 146px 16px 16px;
+  padding: 16px;
   border: 0;
   border-radius: 25px;
   box-shadow: 0 2px 4px 0 ${COLORS.BLACK_OPACITY10};

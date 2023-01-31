@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
-import { getChats } from 'handlers';
 import { formatLastMessageDate } from 'utils/formatDate';
+import { getChats } from 'handlers/chats';
 
 import Image from 'components/Image';
 import ChatListRow from './ChatListRow';

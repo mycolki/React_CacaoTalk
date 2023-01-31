@@ -1,46 +1,36 @@
-import { useQuery } from 'react-query';
 import { useLocation, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
-import useUpdateChatReadCount from 'hooks/useUpdateChatReadCount';
-import { formatDate } from 'utils/formatDate';
-import { getRoom } from 'handlers';
+import { useUser, useRoom } from 'hooks';
 
-import { ChatMessages, ChatRoomHeader } from 'components/ChatRoom';
+import { ChatBottom, ChatMessages, ChatRoomHeader } from 'components/ChatRoom';
 
 interface Location {
   state: {
-    hasUnreadMessage: boolean;
+    unReadCount: boolean;
   };
 }
 
 function ChatRoomPage() {
   const { state } = useLocation() as Location;
   const { roomId } = useParams<{ roomId: string }>();
+  const { room } = useRoom({ roomId, unReadCount: state.unReadCount });
+  const user = useUser();
 
-  useUpdateChatReadCount({ roomId, hasUnreadMessage: state.hasUnreadMessage });
-
-  const { data: room } = useQuery({
-    queryKey: ['room', roomId],
-    queryFn: () => getRoom(roomId), // 변경:
-    enabled: Boolean(roomId),
-    select: data => ({
-      ...data,
-      messages: data.messages.map(message => ({
-        ...message,
-        timeStamp: formatDate(message.timeStamp, 'HH:mm'),
-      })),
-    }),
-  });
-
-  if (!room) {
+  if (!roomId || !room) {
     return null;
   }
 
   return (
     <Container>
       <ChatRoomHeader sender={room.member.name} />
-      <ChatMessages messages={room.messages} />
+
+      {user && (
+        <>
+          <ChatMessages messages={room.messages} user={user} />
+          <ChatBottom roomId={roomId} user={user} />
+        </>
+      )}
     </Container>
   );
 }

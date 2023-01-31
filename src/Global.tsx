@@ -22,6 +22,7 @@ function Global() {
         ${emotionReset}
         :root {
           --app-height: 100%;
+          --app-width: 375px;
         }
         * {
           box-sizing: border-box;

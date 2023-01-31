@@ -1,13 +1,12 @@
 import { PageLayout } from 'components';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
+import queryClient from 'query';
 import Routes from 'pages/Routes';
 import Global from './Global';
 
-const client = new QueryClient();
-
 function App() {
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <Global />
       <PageLayout>
         <Routes />

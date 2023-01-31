@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
-import useUser from 'hooks/useUser';
-import { Message } from 'types';
+import { Member, Message } from 'types';
 
 import Image from 'components/Image';
 import MessageField from 'components/MessageField';
 import MessageRow from 'components/MessageRow';
 
-function ChatMessages({ messages }: { messages: Message[] }) {
-  const user = useUser();
-
+function ChatMessages({ messages, user }: { messages: Message[]; user: Member }) {
   return (
     <Messages>
       {messages.map(({ id, sender, timeStamp, type, img, text }) => {
-        const isUser = sender.id === user?.id;
+        const isUser = sender.id === user.id;
         const align = isUser ? 'right' : 'left';
         const senderType = isUser ? 'user' : 'member';
 

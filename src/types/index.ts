@@ -12,7 +12,7 @@ export interface Chat {
   member: Member;
 }
 
-interface Image {
+export interface Image {
   imgUrl: string;
   description: string;
 }
