@@ -46,5 +46,17 @@ export function formatLastMessageDate(date: string) {
 }
 
 export function isStartOfDay(target: string, compared?: string) {
+  if (!compared) {
+    return false;
+  }
+
   return dayjs(target).diff(compared, 'day') >= 1;
+}
+
+export function isSameMinute(target: string, compared?: string) {
+  if (!compared) {
+    return false;
+  }
+
+  return dayjs(target).isSame(compared, 'm');
 }

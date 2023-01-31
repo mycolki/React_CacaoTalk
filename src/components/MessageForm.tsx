@@ -22,7 +22,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
           setMessage('');
         }}
       >
-        <Input value={message} onChange={e => setMessage(e.target.value)} placeholder="메시지를 입력하세요" />
+        <Input value={message} onChange={e => setMessage(e.target.value)} placeholder="메시지를 입력하세요" autoFocus />
         <Button type="submit" disabled={!message}>
           <Circle size="50px" padding="16px 12px" bgColor="PURPLE">
             <SendIcon />

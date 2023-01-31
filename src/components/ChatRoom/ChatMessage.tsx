@@ -9,17 +9,18 @@ import MessageRow from 'components/MessageRow';
 interface ChatMessageProps {
   message: Message;
   isUser: boolean;
-  isStartMessageOfDay: boolean;
+  isStartOfDay: boolean;
+  isSameMinute: boolean;
 }
 
-function ChatMessage({ message, isUser, isStartMessageOfDay }: ChatMessageProps) {
+function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessageProps) {
   const { timeStamp, type, img, text } = message;
 
   return (
     <>
-      {isStartMessageOfDay && <HorizontalDivider text={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
+      {isStartOfDay && <HorizontalDivider text={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
 
-      <MessageRow align={isUser ? 'right' : 'left'} timeStamp={timeStamp}>
+      <MessageRow align={isUser ? 'right' : 'left'} time={isSameMinute ? '' : formatDate(timeStamp, 'HH:mm')}>
         {type === 'text' ? (
           <MessageField senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
         ) : (

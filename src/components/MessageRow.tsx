@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
-import { formatDate } from 'utils/manipulateDate';
 
 import Text from './Text';
 
@@ -8,14 +7,14 @@ type Align = 'left' | 'right';
 
 interface MessageProps {
   align: 'left' | 'right';
-  timeStamp: string;
+  time: string;
 }
 
-function MessageRow({ align, timeStamp, children }: PropsWithChildren<MessageProps>) {
+function MessageRow({ align, time, children }: PropsWithChildren<MessageProps>) {
   return (
     <MessageWrapper align={align}>
       {children}
-      <TimeText color="CHARCOAL_GREY2">{formatDate(timeStamp, 'HH:mm')}</TimeText>
+      <TimeText color="CHARCOAL_GREY2">{time}</TimeText>
     </MessageWrapper>
   );
 }
