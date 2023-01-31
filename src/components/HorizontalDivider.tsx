@@ -19,6 +19,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 7px 0;
 `;
 
 const Divider = styled.div`
@@ -33,4 +34,5 @@ const CenterText = styled(Text)`
   font-weight: 500;
   letter-spacing: normal;
   opacity: 0.4;
+  white-space: nowrap;
 `;

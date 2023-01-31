@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
-import { formatLastMessageDate } from 'utils/formatDate';
+import { formatLastMessageDate } from 'utils/manipulateDate';
 import { Chat } from 'types';
 
 import Text from 'components/Text';

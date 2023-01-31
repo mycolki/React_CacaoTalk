@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { formatDateToUTC } from 'utils/formatDate';
+import { formatDateToUTC } from 'utils/manipulateDate';
 import { getRoomData } from 'api';
 import { Room, Message } from 'types';
 
