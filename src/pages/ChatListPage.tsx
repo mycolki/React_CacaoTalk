@@ -8,7 +8,7 @@ function ChatListPage() {
   return (
     <Container>
       <ChatListHeader />
-      <Spacing height={10} />
+      <Spacing height={44} />
       <ChatList />
     </Container>
   );

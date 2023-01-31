@@ -22,9 +22,11 @@ function Header({ left, center, right, bgColor }: HeaderProps) {
 export default Header;
 
 const Container = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
-  height: 44px;
+  width: var(--app-width);
+  height: var(--header);
   padding: 8px 12px 10px;
 
   .column {

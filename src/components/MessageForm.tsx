@@ -36,7 +36,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
 export default memo(MessageForm);
 
 const Container = styled.div`
-  padding: 20px 16px;
+  padding: 16px 16px 20px 16px;
 `;
 
 const Form = styled.form`

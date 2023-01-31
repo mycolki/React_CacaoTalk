@@ -1,13 +1,12 @@
 import { useLocation, useParams } from 'react-router-dom';
-import styled from '@emotion/styled';
-import COLORS from 'style/palette';
 import { useUser, useRoom } from 'hooks';
 
-import { ChatBottom, ChatMessages, ChatRoomHeader } from 'components/ChatRoom';
+import { ChatBody, ChatRoomHeader } from 'components/ChatRoom';
+import { Spacing } from 'components';
 
 interface Location {
   state: {
-    unReadCount: boolean;
+    unReadCount: number;
   };
 }
 
@@ -22,22 +21,12 @@ function ChatRoomPage() {
   }
 
   return (
-    <Container>
+    <>
       <ChatRoomHeader sender={room.member.name} />
-
-      {user && (
-        <>
-          <ChatMessages messages={room.messages} user={user} />
-          <ChatBottom roomId={roomId} user={user} />
-        </>
-      )}
-    </Container>
+      <Spacing height={44} />
+      {user && <ChatBody roomId={roomId} messages={room.messages} user={user} />}
+    </>
   );
 }
 
 export default ChatRoomPage;
-
-const Container = styled.div`
-  height: 100%;
-  background-color: ${COLORS.PALE_GREY};
-`;

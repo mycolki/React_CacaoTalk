@@ -20,7 +20,7 @@ function ChatListRow({ chat: { roomId, member, lastMessage, unReadCount } }: Cha
       onClick={() =>
         naviagte(`/room/${roomId}`, {
           state: {
-            hasUnreadMessage: Boolean(unReadCount),
+            unReadCount,
           },
         })
       }

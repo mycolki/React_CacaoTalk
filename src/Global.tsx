@@ -23,6 +23,8 @@ function Global() {
         :root {
           --app-height: 100%;
           --app-width: 375px;
+          --bottom-message-form: 86px;
+          --header: 44px;
         }
         * {
           box-sizing: border-box;

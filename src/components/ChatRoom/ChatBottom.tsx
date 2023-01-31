@@ -1,5 +1,6 @@
 import { useMutation } from 'react-query';
 import styled from '@emotion/styled';
+import COLORS from 'style/palette';
 import { postMessage } from 'handlers/rooms';
 import { putLastMessage } from 'handlers/chats';
 import { Chat, Member, Message } from 'types';
@@ -41,4 +42,5 @@ const Wrapper = styled.div`
   position: fixed;
   width: var(--app-width);
   bottom: 0;
+  background-color: ${COLORS.PALE_GREY};
 `;
