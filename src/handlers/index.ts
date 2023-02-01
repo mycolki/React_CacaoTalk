@@ -1,3 +1,3 @@
-export * as chats from './chats';
-export * as rooms from './rooms';
-export { default as user } from './user';
+export * as chatRoomList from './chatRoomList';
+export * as chatRoom from './chatRoom';
+export { default as currentUser } from './currentUser';

@@ -19,33 +19,34 @@ export function formatDateToUTC(date?: string) {
 
 export function formatLastMessageDate(date: string) {
   const today = dayjs();
+  const targetDate = dayjs(date);
   const yesterday = dayjs().subtract(1, 'day');
   const dateBefore7Days = dayjs().subtract(7, 'day');
 
-  if (dayjs(date).isSame(today, 'day')) {
+  if (targetDate.isSame(today, 'day')) {
     return formatDate(date, 'HH:mm');
   }
 
-  if (dayjs(date).isSame(yesterday, 'day')) {
+  if (targetDate.isSame(yesterday, 'day')) {
     return '어제';
   }
 
-  if (dayjs(date).isBetween(today, dateBefore7Days)) {
+  if (targetDate.isBetween(today, dateBefore7Days)) {
     return formatDate(date, 'dddd');
   }
 
-  if (dayjs(date).isBefore(today, 'year')) {
+  if (targetDate.isBefore(today, 'year')) {
     return formatDate(date, 'YYYY.MM.DD');
   }
 
-  if (dayjs(date).isBefore(dateBefore7Days)) {
+  if (targetDate.isBefore(dateBefore7Days)) {
     return formatDate(date, 'M월 DD일');
   }
 
   throw new Error('data 가 올바르지 않습니다.');
 }
 
-export function isStartOfDay(target: string, compared?: string) {
+export function isMoreThan1DayApart(target: string, compared?: string) {
   if (!compared) {
     return false;
   }

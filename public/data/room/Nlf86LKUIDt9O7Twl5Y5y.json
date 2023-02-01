@@ -1,6 +1,6 @@
 {
   "roomId": "Nlf86LKUIDt9O7Twl5Y5y",
-  "member": {
+  "otherUser": {
     "id": "leedoc@kakao.com",
     "name": "이미라 의사",
     "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/LeeMiRa.png"
@@ -10,7 +10,7 @@
       "id": "_VM6Q7hOSMKf4PUkwa_QS",
       "timeStamp": "2023-01-29T00:10:31Z",
       "type": "text",
-      "sender": {
+      "user": {
         "id": "leedoc@kakao.com",
         "name": "이미라 의사",
         "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/LeeMiRa.png"

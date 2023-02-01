@@ -1,7 +1,7 @@
-import { PageLayout } from 'components';
 import { QueryClientProvider } from 'react-query';
 import queryClient from 'query';
 import Routes from 'pages/Routes';
+import PageLayout from 'pages/PageLayout';
 import Global from './Global';
 
 function App() {

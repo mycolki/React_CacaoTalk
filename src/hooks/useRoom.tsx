@@ -1,24 +1,22 @@
 import { useEffect } from 'react';
 import { useMutation, useQuery } from 'react-query';
-import { putReadCount } from 'handlers/chats';
-import { getRoom } from 'handlers/rooms';
+import { putChatRoomListunreadCount } from 'handlers/chatRoomList';
+import { getChatRoom } from 'handlers/chatRoom';
 
-function useRoom({ roomId, unReadCount }: { roomId?: string; unReadCount: number }) {
-  const { mutate: updateReadCount } = useMutation({ mutationFn: putReadCount });
+function useChatRoom({ roomId, unreadCount }: { roomId?: string; unreadCount: number }) {
+  const { mutate: updateChatRoomListunreadCount } = useMutation(putChatRoomListunreadCount);
 
-  const { data: room } = useQuery({
-    queryKey: ['room', roomId],
-    queryFn: () => getRoom(roomId),
+  const { data: room } = useQuery(['room', roomId], () => getChatRoom(roomId), {
     enabled: Boolean(roomId),
   });
 
   useEffect(() => {
-    if (unReadCount > 0 && roomId) {
-      updateReadCount(roomId);
+    if (unreadCount > 0 && roomId) {
+      updateChatRoomListunreadCount(roomId);
     }
-  }, [roomId, unReadCount, updateReadCount]);
+  }, [roomId, unreadCount, updateChatRoomListunreadCount]);
 
   return { room };
 }
 
-export default useRoom;
+export default useChatRoom;

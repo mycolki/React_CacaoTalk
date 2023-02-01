@@ -1,4 +1,4 @@
-export interface Member {
+export interface UserType {
   id: string;
   name: string;
   profileImageUrl: string;
@@ -9,24 +9,25 @@ export interface ImageType {
   description: string;
 }
 
-export interface Message {
+export interface MessageType {
   id: string;
   timeStamp: string;
-  sender: Member;
+  user: UserType;
   type: 'text' | 'image';
   text?: string;
   image?: ImageType;
 }
 
-export interface Chat {
+export interface ChatRoomListItemType {
   roomId: string;
-  lastMessage: Message;
-  unReadCount: number;
-  member: Member;
+  lastMessage: MessageType;
+  unreadCount: number;
+  otherUser: UserType;
 }
+export type ChatRoomListType = ChatRoomListItemType[];
 
-export interface Room {
+export interface ChatRoomType {
   roomId: string;
-  member: Member;
-  messages: Message[];
+  otherUser: UserType;
+  messages: MessageType[];
 }

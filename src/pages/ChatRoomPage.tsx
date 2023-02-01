@@ -1,34 +1,32 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { TalkProvider } from 'context/Talk';
 import styled from '@emotion/styled';
-import { useUser, useRoom } from 'hooks';
-
-import { RoomBottom as Bottom, RoomBody, ChatRoomHeader as Header } from 'components/ChatRoom';
+import { useCurrentUser, useChatRoom } from 'hooks';
+import { GalleryProvider } from 'context/GalleryContext';
+import { ChatRoom, ChatRoomHeader } from 'components/ChatRoom';
 
 interface Location {
   state: {
-    unReadCount: number;
+    unreadCount: number;
   };
 }
 
 function ChatRoomPage() {
   const { state } = useLocation() as Location;
   const { roomId } = useParams<{ roomId: string }>();
-  const { room } = useRoom({ roomId, unReadCount: state.unReadCount });
-  const user = useUser();
+  const { room } = useChatRoom({ roomId, unreadCount: state.unreadCount });
+  const currentUser = useCurrentUser();
 
-  if (!roomId || !room || !user) {
+  if (!roomId || !room || !currentUser) {
     return null;
   }
 
   return (
-    <TalkProvider>
+    <GalleryProvider>
       <Page>
-        <Header sender={room.member.name} />
-        <RoomBody roomId={roomId} messages={room.messages} user={user} />
-        <Bottom roomId={roomId} user={user} />
+        <ChatRoomHeader user={room.otherUser.name} />
+        <ChatRoom roomId={roomId} messages={room.messages} currentUser={currentUser} />
       </Page>
-    </TalkProvider>
+    </GalleryProvider>
   );
 }
 

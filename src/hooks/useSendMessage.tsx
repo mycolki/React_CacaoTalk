@@ -1,23 +1,22 @@
 import { useMutation } from 'react-query';
-import { postMessage } from 'handlers/rooms';
-import { putLastMessage } from 'handlers/chats';
-import { Chat, Message } from 'types';
+import { ChatRoomListType, MessageType } from 'types';
 import queryClient from 'query';
+import { postMessage } from 'handlers/chatRoom';
+import { putChatRoomListLastMessage } from 'handlers/chatRoomList';
 
 function useSendMessage(roomId: string) {
-  const { mutate: updateLastMessage } = useMutation<Chat[], Error, Message>({
-    mutationFn: lastMessage => putLastMessage(roomId, lastMessage),
-  });
+  const { mutate: updateChatRoomListLastMessage } = useMutation<ChatRoomListType, Error, MessageType>(lastMessage =>
+    putChatRoomListLastMessage(roomId, lastMessage)
+  );
 
   const { mutate: sendMessage, mutateAsync: sendMessageAsync } = useMutation<
-    Message,
+    MessageType,
     Error,
-    Omit<Message, 'id' | 'timeStamp'>
-  >({
-    mutationFn: message => postMessage(roomId, message),
+    Omit<MessageType, 'id' | 'timeStamp'>
+  >(message => postMessage(roomId, message), {
     onSuccess: newMessage => {
       queryClient.invalidateQueries(['room', roomId]);
-      updateLastMessage(newMessage);
+      updateChatRoomListLastMessage(newMessage);
     },
   });
 

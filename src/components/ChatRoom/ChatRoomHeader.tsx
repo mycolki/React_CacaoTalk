@@ -1,19 +1,17 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { TalkContext } from 'context/Talk';
-
-import Header from 'components/Header';
-import Button from 'components/Button';
+import { GalleryContext } from 'context/GalleryContext';
+import { Button, Header } from 'components/Shared';
 import { BackIcon, SearchIcon, UploadIcon } from 'components/Icon';
-import { StyledText3 } from 'components/TextField';
+import { StyledText3 } from 'components/Shared/Texts';
 
 interface ChatRoomHeaderProps {
-  sender: string;
+  user: string;
 }
 
-function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
-  const { toggleGallery } = useContext(TalkContext);
+function ChatRoomHeader({ user }: ChatRoomHeaderProps) {
+  const { toggleGallery } = useContext(GalleryContext);
   const navigate = useNavigate();
 
   return (
@@ -27,7 +25,7 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
           <BackIcon />
         </Button>
       }
-      center={<StyledText3 color="WHITE">{sender}</StyledText3>}
+      center={<StyledText3 color="WHITE">{user}</StyledText3>}
       right={
         <Buttons>
           <Button onClick={toggleGallery}>
@@ -38,7 +36,6 @@ function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
           </Button>
         </Buttons>
       }
-      bgColor="PURPLE"
     />
   );
 }

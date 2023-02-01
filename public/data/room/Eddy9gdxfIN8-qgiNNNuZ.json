@@ -1,6 +1,6 @@
 {
   "roomId": "Eddy9gdxfIN8-qgiNNNuZ",
-  "member": {
+  "otherUser": {
     "id": "yuna@kakao.com",
     "name": "김유나 인턴",
     "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/kinYuNa.png"
@@ -10,7 +10,7 @@
       "id": "zgv00JOebajFKuUJTiprO",
       "timeStamp": "2023-01-23T05:10:31Z",
       "type": "text",
-      "sender": {
+      "user": {
         "id": "yuna@kakao.com",
         "name": "김유나 인턴",
         "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/kinYuNa.png"

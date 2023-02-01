@@ -1,6 +1,6 @@
 {
   "roomId": "uZJBGRyi9jph1y0781jLj",
-  "member": {
+  "otherUser": {
     "id": "sinjung@kakao.com",
     "name": "신정근 바텐더",
     "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"
@@ -10,7 +10,7 @@
       "id": "aMth1cMFkNTjX_EtmMANr",
       "timeStamp": "2023-01-30T00:00:31Z",
       "type": "text",
-      "sender": {
+      "user": {
         "id": "sinjung@kakao.com",
         "name": "신정근 바텐더",
         "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/sinJungGeon.png"

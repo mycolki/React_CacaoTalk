@@ -1,6 +1,6 @@
 {
   "roomId": "e1bCDGTa6sFvxIstTjuVF",
-  "member": {
+  "otherUser": {
     "id": "koohyunmo@kakao.com",
     "name": "구현모",
     "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
@@ -10,7 +10,7 @@
       "id": "shCneaNVzICMcgv0BsqLu",
       "timeStamp": "2022-12-20T07:22:31Z",
       "type": "text",
-      "sender": {
+      "user": {
         "id": "koohyunmo@kakao.com",
         "name": "구현모",
         "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"

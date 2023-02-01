@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
-import getUser from 'handlers/user';
+import getCurrentUser from 'handlers/currentUser';
 
-function useUser() {
-  const { data: user } = useQuery({ queryKey: ['user'], queryFn: getUser, staleTime: Infinity });
+function useCurrentUser() {
+  const { data: currentUser } = useQuery(['user'], getCurrentUser, { staleTime: Infinity });
 
-  return user;
+  return currentUser;
 }
 
-export default useUser;
+export default useCurrentUser;
