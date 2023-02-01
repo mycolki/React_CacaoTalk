@@ -11,9 +11,10 @@ interface TalkProps {
   isUser: boolean;
   isStartOfDay: boolean;
   isSameMinute: boolean;
+  className?: string;
 }
 
-function Talk({ message, isUser, isStartOfDay, isSameMinute }: TalkProps) {
+function Talk({ message, isUser, isStartOfDay, isSameMinute, className }: TalkProps) {
   const { timeStamp, type, image, text } = message;
   const align = isUser ? 'right' : 'left';
   const time = isSameMinute ? '' : formatDate(timeStamp, 'HH:mm');
@@ -22,7 +23,7 @@ function Talk({ message, isUser, isStartOfDay, isSameMinute }: TalkProps) {
     <>
       {isStartOfDay && <HorizontalDivider text={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
 
-      <TalkLayout align={align} time={time}>
+      <TalkLayout align={align} time={time} className={className}>
         {type === 'text' ? (
           <TextMessage senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
         ) : (

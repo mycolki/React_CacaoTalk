@@ -27,6 +27,7 @@ export function postMessage(roomId: string, message: Omit<Message, 'id' | 'timeS
 
     const room: Room = JSON.parse(roomSession);
     const newMessage = { ...message, id: nanoid(), timeStamp: formatDateToUTC() };
+
     room.messages.push(newMessage);
     window.sessionStorage.setItem(`roomId:${roomId}`, JSON.stringify(room));
 

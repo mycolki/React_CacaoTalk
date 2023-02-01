@@ -7,6 +7,7 @@ import { Chat } from 'types';
 import Circle from 'components/Circle';
 import Image from 'components/Image';
 import { Text, StyledText4 } from 'components/TextField';
+import { slideChatProfile, slideChatText } from 'style/animation';
 
 interface ChatListRowProps {
   chat: Chat;
@@ -25,23 +26,25 @@ function ChatListRow({ chat: { roomId, member, lastMessage, unReadCount } }: Cha
         })
       }
     >
-      <Image src={member.profileImageUrl} alt={member.name} size={56} borderRadius="28px" />
+      <ImageArea src={member.profileImageUrl} alt={member.name} size={56} borderRadius="28px" />
 
-      <Message>
-        <MemberText color="CHARCOAL_GREY">{member.name}</MemberText>
-        <LastMessageText color="COOL_GREY">
-          {lastMessage.type === 'text' ? lastMessage.text : '사진을 보냈습니다.'}
-        </LastMessageText>
-      </Message>
+      <TextArea>
+        <Row>
+          <MemberText color="CHARCOAL_GREY">{member.name}</MemberText>
+          <TimeText color="CHARCOAL_GREY2">{formatLastMessageDate(lastMessage.timeStamp)}</TimeText>
+        </Row>
 
-      <Time>
-        <TimeText color="CHARCOAL_GREY2">{formatLastMessageDate(lastMessage.timeStamp)}</TimeText>
-        {unReadCount > 0 && (
-          <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
-            <UnReadCountText color="WHITE">{unReadCount}</UnReadCountText>
-          </Circle>
-        )}
-      </Time>
+        <Row>
+          <LastMessageText color="COOL_GREY">
+            {lastMessage.type === 'text' ? lastMessage.text : '사진을 보냈습니다.'}
+          </LastMessageText>
+          {unReadCount > 0 && (
+            <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
+              <UnReadCountText color="WHITE">{unReadCount}</UnReadCountText>
+            </Circle>
+          )}
+        </Row>
+      </TextArea>
     </ListRow>
   );
 }
@@ -50,6 +53,7 @@ export default ChatListRow;
 
 const ListRow = styled.li`
   display: flex;
+  justify-content: stretch;
   align-items: center;
   height: 74px;
   padding: 9px 16px;
@@ -58,41 +62,56 @@ const ListRow = styled.li`
   background-color: ${COLORS.WHITE};
 `;
 
-const Message = styled.div`
-  width: 230px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+const ImageArea = styled(Image)`
+  position: relative;
+  left: -20px;
+  animation-name: ${slideChatProfile};
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation-delay: 200ms;
+`;
+
+const TextArea = styled.div`
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  left: -80px;
+  animation-name: ${slideChatText};
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+`;
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const MemberText = styled(StyledText4)`
   display: block;
   margin-bottom: 3px;
 `;
-
-const LastMessageText = styled(Text)`
-  font-size: 0.813rem;
-  font-weight: 500;
-  letter-spacing: -0.1px;
-`;
-
-const Time = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.375rem;
-`;
-
 const TimeText = styled(Text)`
   opacity: 0.4;
   font-size: 0.688rem;
   font-weight: 500;
   letter-spacing: normal;
   text-align: right;
-  white-space: nowrap;
 `;
 
+const LastMessageText = styled(Text)`
+  width: 230px;
+  font-size: 0.813rem;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
 const UnReadCountText = styled(Text)`
   font-size: 0.625rem;
   letter-spacing: -0.08px;

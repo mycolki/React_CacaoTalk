@@ -1,4 +1,4 @@
-import { forwardRef, PropsWithChildren, Ref } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import styled from '@emotion/styled';
 import { Member, Message } from 'types';
 import { isSameMinute, isStartOfDay } from 'utils/manipulateDate';
@@ -9,11 +9,13 @@ import Talk from './Talk';
 interface TalksProps {
   messages: Message[];
   user: Member;
+  lastTalk: ReactNode;
+  className?: string;
 }
 
-function Talks({ messages, user, children }: PropsWithChildren<TalksProps>, ref: Ref<HTMLUListElement>) {
+function Talks({ messages, user, lastTalk, className }: TalksProps, ref: Ref<HTMLUListElement>) {
   return (
-    <TalkList ref={ref}>
+    <TalkList ref={ref} className={className}>
       {messages.map((message, i, originMessages) => (
         <Talk
           key={message.id}
@@ -23,7 +25,7 @@ function Talks({ messages, user, children }: PropsWithChildren<TalksProps>, ref:
           isSameMinute={isSameMinute(message.timeStamp, originMessages[i + 1]?.timeStamp)}
         />
       ))}
-      {children}
+      {lastTalk}
     </TalkList>
   );
 }
@@ -31,7 +33,9 @@ function Talks({ messages, user, children }: PropsWithChildren<TalksProps>, ref:
 export default forwardRef(Talks);
 
 const TalkList = styled.ul`
+  height: 100%;
   padding: 20px 16px 0 16px;
+  overflow-x: hidden;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {

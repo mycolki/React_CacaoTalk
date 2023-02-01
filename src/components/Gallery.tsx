@@ -46,7 +46,7 @@ function getLocalImages() {
 
 const GalleryImages = styled(HorizontalImages)`
   animation-name: ${slideDown};
-  animation-duration: 100ms;
+  animation-duration: 150ms;
   animation-timing-function: ease-out;
   animation-iteration-count: 1;
   animation-fill-mode: both;

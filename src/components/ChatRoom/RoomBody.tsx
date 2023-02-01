@@ -24,13 +24,19 @@ function RoomBody({ messages, user, roomId }: RoomBodyProps) {
     <Body>
       {showingGallery && <Gallery roomId={roomId} user={user} />}
 
-      <Talks ref={ref} messages={messages} user={user}>
-        {loading && localImage && (
-          <TalkLayout align="right">
-            <ImageMessage loading image={localImage} />
-          </TalkLayout>
-        )}
-      </Talks>
+      <Talks
+        ref={ref}
+        messages={messages}
+        user={user}
+        lastTalk={
+          loading &&
+          localImage && (
+            <TalkLayout align="right">
+              <ImageMessage loading image={localImage} />
+            </TalkLayout>
+          )
+        }
+      />
     </Body>
   );
 }
