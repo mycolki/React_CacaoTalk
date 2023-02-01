@@ -6,7 +6,7 @@ import { Member } from 'types';
 import MessageForm from 'components/MessageForm';
 
 function ChatBottom({ roomId, user }: { roomId: string; user: Member }) {
-  const sendMessage = useSendMessage(roomId);
+  const { sendMessage } = useSendMessage(roomId);
 
   return (
     <Wrapper>

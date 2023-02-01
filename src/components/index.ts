@@ -1,5 +1,5 @@
 export * as Icon from './Icon';
-export * as Chat from './Chat';
+export * as Chat from './Chats';
 export * as ChatRoom from './ChatRoom';
 export * as TextField from './TextField';
 export { default as PageLayout } from './PageLayout';
@@ -14,3 +14,4 @@ export { default as Spacing } from './Spacing';
 export { default as HorizontalDivider } from './HorizontalDivider';
 export { default as Gallery } from './Gallery';
 export { default as HorizontalImages } from './HorizontalImages';
+export { default as ImageMessage } from './ImageMessage';

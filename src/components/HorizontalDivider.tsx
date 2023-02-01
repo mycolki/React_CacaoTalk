@@ -3,9 +3,14 @@ import COLORS from 'style/palette';
 
 import { Text } from './TextField';
 
-function HorizontalDivider({ text }: { text: string }) {
+interface HorizontalDividerProps {
+  text: string;
+  className?: string;
+}
+
+function HorizontalDivider({ text, className }: HorizontalDividerProps) {
   return (
-    <Container>
+    <Container className={className}>
       <Divider />
       <CenterText color="CHARCOAL_GREY2">{text}</CenterText>
       <Divider />

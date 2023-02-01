@@ -1,13 +1,17 @@
+import { useContext, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import { useEffect, useRef } from 'react';
-import COLORS from 'style/palette';
 import { Member, Message } from 'types';
+import { MessageContext } from 'context/Message';
 import { isSameMinute, isStartOfDay } from 'utils/manipulateDate';
+import COLORS from 'style/palette';
 
+import ImageMessage from 'components/ImageMessage';
+import MessageRow from 'components/MessageRow';
 import ChatMessage from './ChatMessage';
 
 function ChatMessages({ messages, user }: { messages: Message[]; user: Member }) {
   const messagesRef = useRef<HTMLUListElement>(null);
+  const { loading, localImage } = useContext(MessageContext);
 
   useEffect(() => {
     const messagesEl = messagesRef.current;
@@ -19,18 +23,24 @@ function ChatMessages({ messages, user }: { messages: Message[]; user: Member })
         messagesEl.scrollTop = messagesEl.scrollHeight;
       }
     }
-  }, [messagesRef]);
+  }, [messagesRef, messages]);
 
   return (
     <Messages ref={messagesRef}>
       {messages.map((message, i, originMessages) => (
         <ChatMessage
+          key={message.id}
           message={message}
           isUser={Boolean(message.sender.id === user.id)}
           isStartOfDay={isStartOfDay(message.timeStamp, originMessages[i - 1]?.timeStamp)}
           isSameMinute={isSameMinute(message.timeStamp, originMessages[i + 1]?.timeStamp)}
         />
       ))}
+      {loading && localImage && (
+        <MessageRow align="right">
+          <ImageMessage loading image={localImage} />
+        </MessageRow>
+      )}
     </Messages>
   );
 }
@@ -39,7 +49,7 @@ export default ChatMessages;
 
 const Messages = styled.ul`
   height: calc((var(--app-height) - var(--header) - var(--bottom-message-form)));
-  padding: 20px 16px;
+  padding: 20px 16px 0 16px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {

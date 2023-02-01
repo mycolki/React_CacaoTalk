@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-import { ChatList, ChatListHeader } from 'components/Chat';
+import { ChatList, ChatListHeader } from 'components/Chats';
 
 function ChatListPage() {
   return (

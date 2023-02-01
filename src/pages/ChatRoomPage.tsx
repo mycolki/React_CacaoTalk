@@ -4,6 +4,7 @@ import { useUser, useRoom } from 'hooks';
 
 import { ChatBody, ChatRoomHeader } from 'components/ChatRoom';
 import { Gallery } from 'components';
+import { MessageProvider } from 'context/Message';
 
 interface Location {
   state: {
@@ -26,8 +27,10 @@ function ChatRoomPage() {
   return (
     <>
       <ChatRoomHeader sender={room.member.name} onUploadButtonClick={() => setCanShowGallery(prev => !prev)} />
-      {user && canShowGallery && <Gallery roomId={roomId} user={user} />}
-      {user && <ChatBody roomId={roomId} messages={room.messages} user={user} />}
+      <MessageProvider>
+        {user && canShowGallery && <Gallery roomId={roomId} user={user} />}
+        {user && <ChatBody roomId={roomId} messages={room.messages} user={user} />}
+      </MessageProvider>
     </>
   );
 }

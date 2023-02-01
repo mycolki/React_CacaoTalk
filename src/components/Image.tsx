@@ -3,9 +3,10 @@ interface ImageProps {
   alt: string;
   size: number;
   borderRadius?: string;
+  className?: string;
 }
 
-function Image({ src, alt, size, borderRadius }: ImageProps) {
+function Image({ src, alt, size, borderRadius, className }: ImageProps) {
   return (
     <img
       src={src}
@@ -15,6 +16,7 @@ function Image({ src, alt, size, borderRadius }: ImageProps) {
       style={{
         borderRadius: borderRadius ?? 0,
       }}
+      className={className}
     />
   );
 }

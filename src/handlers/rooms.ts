@@ -30,6 +30,14 @@ export function postMessage(roomId: string, message: Omit<Message, 'id' | 'timeS
     room.messages.push(newMessage);
     window.sessionStorage.setItem(`roomId:${roomId}`, JSON.stringify(room));
 
-    resolve(newMessage);
+    if (message.type === 'text') {
+      resolve(newMessage);
+      return;
+    }
+
+    // image uploading
+    setTimeout(() => {
+      resolve(newMessage);
+    }, 5000);
   });
 }

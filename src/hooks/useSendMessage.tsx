@@ -9,7 +9,11 @@ function useSendMessage(roomId: string) {
     mutationFn: lastMessage => putLastMessage(roomId, lastMessage),
   });
 
-  const { mutate: sendMessage } = useMutation<Message, Error, Omit<Message, 'id' | 'timeStamp'>>({
+  const { mutate: sendMessage, mutateAsync: sendMessageAsync } = useMutation<
+    Message,
+    Error,
+    Omit<Message, 'id' | 'timeStamp'>
+  >({
     mutationFn: message => postMessage(roomId, message),
     onSuccess: newMessage => {
       queryClient.invalidateQueries(['room', roomId]);
@@ -17,7 +21,7 @@ function useSendMessage(roomId: string) {
     },
   });
 
-  return sendMessage;
+  return { sendMessage, sendMessageAsync };
 }
 
 export default useSendMessage;

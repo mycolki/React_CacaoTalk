@@ -7,11 +7,12 @@ interface HeaderProps {
   center: ReactNode;
   right?: ReactNode;
   bgColor?: keyof typeof COLORS;
+  className?: string;
 }
 
-function Header({ left, center, right, bgColor }: HeaderProps) {
+function Header({ left, center, right, bgColor, className }: HeaderProps) {
   return (
-    <Container style={{ backgroundColor: bgColor ? COLORS[bgColor] : undefined }}>
+    <Container style={{ backgroundColor: bgColor ? COLORS[bgColor] : undefined }} className={className}>
       <div className="column">{left}</div>
       <div className="column">{center}</div>
       <div className="column">{right}</div>
@@ -33,15 +34,15 @@ const Container = styled.div`
     width: 33%;
   }
 
-  & :nth-child(1) {
+  & :nth-of-type(1) {
     justify-content: flex-start;
   }
 
-  & :nth-child(2) {
+  & :nth-of-type(2) {
     justify-content: center;
   }
 
-  & :nth-child(3) {
+  & :nth-of-type(3) {
     justify-content: flex-end;
   }
 `;

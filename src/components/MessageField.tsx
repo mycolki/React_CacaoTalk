@@ -20,11 +20,12 @@ type Sender = keyof typeof sender;
 interface ChatMessageProps {
   senderType: Sender;
   message: string;
+  className?: string;
 }
 
-function MessageField({ senderType, message }: ChatMessageProps) {
+function MessageField({ senderType, message, className }: ChatMessageProps) {
   return (
-    <Wrapper boxStyle={sender[senderType]}>
+    <Wrapper boxStyle={sender[senderType]} className={className}>
       <StyledText2 color={senderType === 'user' ? 'WHITE' : 'CHARCOAL_GREY2'}>{message}</StyledText2>
     </Wrapper>
   );

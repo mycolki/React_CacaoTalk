@@ -1,6 +1,9 @@
+import { useContext, useState } from 'react';
+import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
+import { MessageContext } from 'context/Message';
 import { useSendMessage } from 'hooks';
-import { useState } from 'react';
-import { Member } from 'types';
+import { ImageType, Member } from 'types';
 
 import HorizontalImages from './HorizontalImages';
 
@@ -11,22 +14,21 @@ interface GalleryProps {
 
 function Gallery({ roomId, user }: GalleryProps) {
   const [localImages, setLocalImages] = useState(() => getLocalImages());
+  const { cacheLocalImage, removeLocalImageCache } = useContext(MessageContext);
+  const { sendMessageAsync } = useSendMessage(roomId);
 
-  const sendMessage = useSendMessage(roomId);
+  const handleSendMessage = async (image: ImageType) => {
+    cacheLocalImage(image);
+    await sendMessageAsync({
+      type: 'image',
+      image,
+      sender: user,
+    });
+    setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
+    removeLocalImageCache();
+  };
 
-  return (
-    <HorizontalImages
-      images={localImages}
-      onClick={image => {
-        sendMessage({
-          type: 'image',
-          image,
-          sender: user,
-        });
-        setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
-      }}
-    />
-  );
+  return <GalleryImages images={localImages} onClick={handleSendMessage} />;
 }
 
 export default Gallery;
@@ -41,3 +43,20 @@ function getLocalImages() {
 
   return localImages;
 }
+
+const slideDown = keyframes`
+  0% {
+    height:0
+  }
+  100% {
+    height:73.5px
+  }
+`;
+
+const GalleryImages = styled(HorizontalImages)`
+  animation-name: ${slideDown};
+  animation-duration: 100ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+`;

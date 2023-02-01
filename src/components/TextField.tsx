@@ -1,9 +1,23 @@
+import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
 type Color = keyof typeof COLORS;
 
-export const Text = styled.span<{ color: Color }>`
+interface TextProps {
+  color: Color;
+  className?: string;
+}
+
+export function Text({ color, className, children }: PropsWithChildren<TextProps>) {
+  return (
+    <BasicText className={className} color={color}>
+      {children}
+    </BasicText>
+  );
+}
+
+export const BasicText = styled.span<{ color: Color }>`
   font-family: AppleSDGothicNeo;
   font-size: 1rem;
   letter-spacing: -0.2px;

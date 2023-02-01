@@ -2,9 +2,9 @@ import { Message } from 'types';
 import { formatDate } from 'utils/manipulateDate';
 
 import HorizontalDivider from 'components/HorizontalDivider';
-import Image from 'components/Image';
 import MessageField from 'components/MessageField';
 import MessageRow from 'components/MessageRow';
+import ImageMessage from 'components/ImageMessage';
 
 interface ChatMessageProps {
   message: Message;
@@ -15,16 +15,18 @@ interface ChatMessageProps {
 
 function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessageProps) {
   const { timeStamp, type, image, text } = message;
+  const align = isUser ? 'right' : 'left';
+  const time = isSameMinute ? '' : formatDate(timeStamp, 'HH:mm');
 
   return (
     <>
       {isStartOfDay && <HorizontalDivider text={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
 
-      <MessageRow align={isUser ? 'right' : 'left'} time={isSameMinute ? '' : formatDate(timeStamp, 'HH:mm')}>
+      <MessageRow align={align} time={time}>
         {type === 'text' ? (
           <MessageField senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
         ) : (
-          <Image src={image?.imageUrl ?? ''} alt={image?.description ?? ''} size={150} borderRadius="10px" />
+          <ImageMessage image={image} />
         )}
       </MessageRow>
     </>

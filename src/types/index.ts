@@ -4,7 +4,7 @@ export interface Member {
   profileImageUrl: string;
 }
 
-export interface Image {
+export interface ImageType {
   imageUrl: string;
   description: string;
 }
@@ -15,7 +15,7 @@ export interface Message {
   sender: Member;
   type: 'text' | 'image';
   text?: string;
-  image?: Image;
+  image?: ImageType;
 }
 
 export interface Chat {

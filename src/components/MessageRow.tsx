@@ -7,14 +7,15 @@ type Align = 'left' | 'right';
 
 interface MessageProps {
   align: 'left' | 'right';
-  time: string;
+  time?: string;
+  className?: string;
 }
 
-function MessageRow({ align, time, children }: PropsWithChildren<MessageProps>) {
+function MessageRow({ align, time, className, children }: PropsWithChildren<MessageProps>) {
   return (
-    <MessageWrapper align={align}>
+    <MessageWrapper align={align} className={className}>
       {children}
-      <TimeText color="CHARCOAL_GREY2">{time}</TimeText>
+      <TimeText color="CHARCOAL_GREY2">{time ?? ''}</TimeText>
     </MessageWrapper>
   );
 }

@@ -6,9 +6,10 @@ interface CircleProps {
   size: string;
   padding?: string;
   bgColor?: keyof typeof COLORS;
+  className?: string;
 }
 
-function Circle({ size, padding, bgColor = 'WHITE', children }: PropsWithChildren<CircleProps>) {
+function Circle({ size, padding, bgColor = 'WHITE', className, children }: PropsWithChildren<CircleProps>) {
   return (
     <Wrapper
       style={{
@@ -17,6 +18,7 @@ function Circle({ size, padding, bgColor = 'WHITE', children }: PropsWithChildre
         height: size,
         backgroundColor: COLORS[bgColor],
       }}
+      className={className}
     >
       {children}
     </Wrapper>

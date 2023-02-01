@@ -7,9 +7,17 @@ interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   bgColor?: keyof typeof COLORS;
+  className?: string;
 }
 
-function Button({ type = 'button', onClick, disabled = false, bgColor, children }: PropsWithChildren<ButtonProps>) {
+function Button({
+  type = 'button',
+  onClick,
+  disabled = false,
+  bgColor,
+  className,
+  children,
+}: PropsWithChildren<ButtonProps>) {
   return (
     <ButtonWrapper
       type={type}
@@ -18,6 +26,7 @@ function Button({ type = 'button', onClick, disabled = false, bgColor, children 
       style={{
         backgroundColor: bgColor ? COLORS[bgColor] : 'transparent',
       }}
+      className={className}
     >
       {children}
     </ButtonWrapper>

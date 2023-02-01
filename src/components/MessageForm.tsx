@@ -8,13 +8,14 @@ import Button from './Button';
 
 interface MessageFormProps {
   onSubmit: (message: string) => void;
+  className?: string;
 }
 
-function MessageForm({ onSubmit }: MessageFormProps) {
+function MessageForm({ onSubmit, className }: MessageFormProps) {
   const [message, setMessage] = useState('');
 
   return (
-    <Container>
+    <Container className={className}>
       <Form
         onSubmit={e => {
           e.preventDefault();
@@ -23,7 +24,7 @@ function MessageForm({ onSubmit }: MessageFormProps) {
         }}
       >
         <Input value={message} onChange={e => setMessage(e.target.value)} placeholder="메시지를 입력하세요" autoFocus />
-        <Button type="submit" disabled={!message}>
+        <Button type="submit" disabled={!message.trim()}>
           <Circle size="50px" padding="16px 12px" bgColor="PURPLE">
             <SendIcon />
           </Circle>

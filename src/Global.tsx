@@ -33,21 +33,21 @@ function Global() {
 
         @font-face {
           font-family: AppleSDGothicNeo;
-          src: local(AppleSDGothicNeoB), url(./font/AppleSDGothicNeoB.ttf) format('truetype');
+          src: local(AppleSDGothicNeoB), url(/font/AppleSDGothicNeoB.ttf) format('truetype');
           font-weight: bold;
           font-style: normal;
           font-stretch: normal;
         }
         @font-face {
           font-family: AppleSDGothicNeo;
-          src: local(AppleSDGothicNeoSB), url(./font/AppleSDGothicNeoSB.ttf) format('truetype');
+          src: local(AppleSDGothicNeoSB), url(/font/AppleSDGothicNeoSB.ttf) format('truetype');
           font-weight: 600;
           font-style: normal;
           font-stretch: normal;
         }
         @font-face {
           font-family: AppleSDGothicNeo;
-          src: local(AppleSDGothicNeoM), url(./font/AppleSDGothicNeoM.ttf) format('truetype');
+          src: local(AppleSDGothicNeoM), url(/font/AppleSDGothicNeoM.ttf) format('truetype');
           font-weight: 500;
           font-style: normal;
           font-stretch: normal;
