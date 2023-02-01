@@ -5,7 +5,7 @@ import { Member } from 'types';
 
 import MessageForm from 'components/MessageForm';
 
-function ChatBottom({ roomId, user }: { roomId: string; user: Member }) {
+function RoomBottom({ roomId, user }: { roomId: string; user: Member }) {
   const { sendMessage } = useSendMessage(roomId);
 
   return (
@@ -23,7 +23,7 @@ function ChatBottom({ roomId, user }: { roomId: string; user: Member }) {
   );
 }
 
-export default ChatBottom;
+export default RoomBottom;
 
 const Wrapper = styled.div`
   height: var(--bottom-message-form);

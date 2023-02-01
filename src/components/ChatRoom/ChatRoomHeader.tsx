@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { TalkContext } from 'context/Talk';
 
 import Header from 'components/Header';
 import Button from 'components/Button';
@@ -8,10 +10,10 @@ import { StyledText3 } from 'components/TextField';
 
 interface ChatRoomHeaderProps {
   sender: string;
-  onUploadButtonClick: () => void;
 }
 
-function ChatRoomHeader({ sender, onUploadButtonClick }: ChatRoomHeaderProps) {
+function ChatRoomHeader({ sender }: ChatRoomHeaderProps) {
+  const { toggleGallery } = useContext(TalkContext);
   const navigate = useNavigate();
 
   return (
@@ -28,7 +30,7 @@ function ChatRoomHeader({ sender, onUploadButtonClick }: ChatRoomHeaderProps) {
       center={<StyledText3 color="WHITE">{sender}</StyledText3>}
       right={
         <Buttons>
-          <Button onClick={onUploadButtonClick}>
+          <Button onClick={toggleGallery}>
             <UploadIcon />
           </Button>
           <Button>

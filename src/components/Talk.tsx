@@ -2,18 +2,18 @@ import { Message } from 'types';
 import { formatDate } from 'utils/manipulateDate';
 
 import HorizontalDivider from 'components/HorizontalDivider';
-import MessageField from 'components/MessageField';
-import MessageRow from 'components/MessageRow';
+import TextMessage from 'components/TextMessage';
+import TalkLayout from 'components/TalkLayout';
 import ImageMessage from 'components/ImageMessage';
 
-interface ChatMessageProps {
+interface TalkProps {
   message: Message;
   isUser: boolean;
   isStartOfDay: boolean;
   isSameMinute: boolean;
 }
 
-function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessageProps) {
+function Talk({ message, isUser, isStartOfDay, isSameMinute }: TalkProps) {
   const { timeStamp, type, image, text } = message;
   const align = isUser ? 'right' : 'left';
   const time = isSameMinute ? '' : formatDate(timeStamp, 'HH:mm');
@@ -22,15 +22,15 @@ function ChatMessage({ message, isUser, isStartOfDay, isSameMinute }: ChatMessag
     <>
       {isStartOfDay && <HorizontalDivider text={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
 
-      <MessageRow align={align} time={time}>
+      <TalkLayout align={align} time={time}>
         {type === 'text' ? (
-          <MessageField senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
+          <TextMessage senderType={isUser ? 'user' : 'member'} message={text ?? ''} />
         ) : (
           <ImageMessage image={image} />
         )}
-      </MessageRow>
+      </TalkLayout>
     </>
   );
 }
 
-export default ChatMessage;
+export default Talk;

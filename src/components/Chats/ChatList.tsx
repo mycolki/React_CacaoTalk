@@ -20,7 +20,7 @@ function ChatList() {
 }
 export default ChatList;
 
-const List = styled.li`
+const List = styled.ul`
   padding-top: 10px;
   list-style: none;
 `;

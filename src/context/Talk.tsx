@@ -1,20 +1,25 @@
 import { createContext, ReactNode, useMemo, useState } from 'react';
 import { ImageType } from 'types';
 
-interface MessageContextType {
+interface TalkContextType {
   loading: boolean;
   cacheLocalImage: (image: ImageType) => void;
   removeLocalImageCache: () => void;
   localImage?: ImageType;
+  showingGallery: boolean;
+  toggleGallery: () => void;
 }
 
-export const MessageContext = createContext<MessageContextType>({
+export const TalkContext = createContext<TalkContextType>({
   loading: false,
   cacheLocalImage: () => {},
   removeLocalImageCache: () => {},
+  showingGallery: false,
+  toggleGallery: () => {},
 });
 
-export function MessageProvider({ children }: { children: ReactNode }) {
+export function TalkProvider({ children }: { children: ReactNode }) {
+  const [showingGallery, setShowingGallery] = useState(false);
   const [loading, setLoading] = useState(false);
   const [localImage, setLocalImage] = useState<ImageType | undefined>();
 
@@ -30,9 +35,13 @@ export function MessageProvider({ children }: { children: ReactNode }) {
         setLocalImage(undefined);
         setLoading(false);
       },
+      showingGallery,
+      toggleGallery() {
+        setShowingGallery(prev => !prev);
+      },
     }),
-    [localImage, loading]
+    [loading, localImage, showingGallery]
   );
 
-  return <MessageContext.Provider value={value}>{children}</MessageContext.Provider>;
+  return <TalkContext.Provider value={value}>{children}</TalkContext.Provider>;
 }

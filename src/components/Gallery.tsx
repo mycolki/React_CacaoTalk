@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import styled from '@emotion/styled';
-import { MessageContext } from 'context/Message';
+import { TalkContext } from 'context/Talk';
 import { useSendMessage } from 'hooks';
 import { ImageType, Member } from 'types';
 import { slideDown } from 'style/animation';
@@ -14,7 +14,7 @@ interface GalleryProps {
 
 function Gallery({ roomId, user }: GalleryProps) {
   const [localImages, setLocalImages] = useState(() => getLocalImages());
-  const { cacheLocalImage, removeLocalImageCache } = useContext(MessageContext);
+  const { cacheLocalImage, removeLocalImageCache } = useContext(TalkContext);
   const { sendMessageAsync } = useSendMessage(roomId);
 
   const handleSendMessage = async (image: ImageType) => {

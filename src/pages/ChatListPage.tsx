@@ -5,16 +5,16 @@ import { ChatList, ChatListHeader as Header } from 'components/Chats';
 
 function ChatListPage() {
   return (
-    <Container>
+    <Page>
       <Header />
       <ChatList />
-    </Container>
+    </Page>
   );
 }
 
 export default ChatListPage;
 
-const Container = styled.div`
+const Page = styled.div`
   height: 100%;
   background-color: ${COLORS.WHITE};
 `;

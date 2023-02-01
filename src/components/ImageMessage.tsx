@@ -14,16 +14,20 @@ interface ImageMessageProps {
 }
 
 function ImageMessage({ loading, image, className }: ImageMessageProps) {
+  if (!image) {
+    return null;
+  }
+
   return (
     <Container className={className}>
-      <Image src={image?.imageUrl ?? ''} alt={image?.description ?? ''} size={200} borderRadius="10px" />
+      <Image src={image.imageUrl} alt={image.description} size={200} borderRadius="10px" />
       {loading && (
         <>
-          <DeleteButton>
+          <CancelButton>
             <Circle size="40px" padding="10px" bgColor="BLACK">
               <DeleteIcon />
             </Circle>
-          </DeleteButton>
+          </CancelButton>
           <ProgressBar />
         </>
       )}
@@ -37,7 +41,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-const DeleteButton = styled(Button)`
+const CancelButton = styled(Button)`
   position: absolute;
   top: 50%;
   left: 50%;

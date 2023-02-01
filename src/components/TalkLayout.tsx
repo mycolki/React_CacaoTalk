@@ -5,24 +5,24 @@ import { Text } from './TextField';
 
 type Align = 'left' | 'right';
 
-interface MessageProps {
+interface TalkLayoutProps {
   align: 'left' | 'right';
   time?: string;
   className?: string;
 }
 
-function MessageRow({ align, time, className, children }: PropsWithChildren<MessageProps>) {
+function TalkLayout({ align, time, className, children }: PropsWithChildren<TalkLayoutProps>) {
   return (
-    <MessageWrapper align={align} className={className}>
+    <Row align={align} className={className}>
       {children}
       <TimeText color="CHARCOAL_GREY2">{time ?? ''}</TimeText>
-    </MessageWrapper>
+    </Row>
   );
 }
 
-export default MessageRow;
+export default TalkLayout;
 
-const MessageWrapper = styled.div<{ align: Align }>`
+const Row = styled.div<{ align: Align }>`
   display: flex;
   flex-direction: ${({ align }) => (align === 'right' ? 'row-reverse' : 'row')};
   align-items: flex-end;

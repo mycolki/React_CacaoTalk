@@ -16,7 +16,7 @@ function HorizontalImages({ images, onClick, className }: HorizontalImagesProps)
     <Container className={className}>
       <ImagesWrapper>
         {images.map(image => (
-          <Button onClick={() => onClick(image)}>
+          <Button key={image.imageUrl} onClick={() => onClick(image)}>
             <Image src={image.imageUrl} alt={image.description} size={46} borderRadius="6px" />
           </Button>
         ))}
@@ -30,13 +30,30 @@ export default HorizontalImages;
 const Container = styled.div`
   width: var(--app-width);
   background-color: ${COLORS.PURPLE};
-  padding: 12px 0px 12px 18px;
+  padding: 12px 18px;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: ${COLORS.COOL_GREY};
+    }
+  }
 `;
 
 const ImagesWrapper = styled.div`
-  display: flex;
-  overflow-x: auto;
-  overflow: hidden;
   white-space: nowrap;
-  gap: 10px;
+
+  img {
+    margin-right: 10px;
+  }
 `;

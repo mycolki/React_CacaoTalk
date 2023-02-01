@@ -23,7 +23,7 @@ interface ChatMessageProps {
   className?: string;
 }
 
-function MessageField({ senderType, message, className }: ChatMessageProps) {
+function TextMessage({ senderType, message, className }: ChatMessageProps) {
   return (
     <Wrapper boxStyle={sender[senderType]} className={className}>
       <StyledText2 color={senderType === 'user' ? 'WHITE' : 'CHARCOAL_GREY2'}>{message}</StyledText2>
@@ -31,7 +31,7 @@ function MessageField({ senderType, message, className }: ChatMessageProps) {
   );
 }
 
-export default MessageField;
+export default TextMessage;
 
 const Wrapper = styled.div<{ boxStyle: SerializedStyles }>`
   max-width: 250px;
