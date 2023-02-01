@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { MessageContext } from 'context/Message';
 import { useSendMessage } from 'hooks';
 import { ImageType, Member } from 'types';
+import { slideDown } from 'style/animation';
 
 import HorizontalImages from './HorizontalImages';
 
@@ -43,15 +43,6 @@ function getLocalImages() {
 
   return localImages;
 }
-
-const slideDown = keyframes`
-  0% {
-    height:0
-  }
-  100% {
-    height:73.5px
-  }
-`;
 
 const GalleryImages = styled(HorizontalImages)`
   animation-name: ${slideDown};

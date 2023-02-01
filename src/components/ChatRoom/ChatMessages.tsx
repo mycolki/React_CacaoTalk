@@ -10,8 +10,9 @@ import MessageRow from 'components/MessageRow';
 import ChatMessage from './ChatMessage';
 
 function ChatMessages({ messages, user }: { messages: Message[]; user: Member }) {
-  const messagesRef = useRef<HTMLUListElement>(null);
   const { loading, localImage } = useContext(MessageContext);
+
+  const messagesRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const messagesEl = messagesRef.current;
@@ -23,7 +24,7 @@ function ChatMessages({ messages, user }: { messages: Message[]; user: Member })
         messagesEl.scrollTop = messagesEl.scrollHeight;
       }
     }
-  }, [messagesRef, messages]);
+  }, [messagesRef, messages, localImage]);
 
   return (
     <Messages ref={messagesRef}>
@@ -48,7 +49,8 @@ function ChatMessages({ messages, user }: { messages: Message[]; user: Member })
 export default ChatMessages;
 
 const Messages = styled.ul`
-  height: calc((var(--app-height) - var(--header) - var(--bottom-message-form)));
+  /* max-height: calc(100% - var(--bottom-message-form)); */
+  /* height: calc((var(--app-height) - var(--header) - var(--bottom-message-form))); */
   padding: 20px 16px 0 16px;
   overflow-y: scroll;
 

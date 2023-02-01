@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 
-import { ChatList, ChatListHeader } from 'components/Chats';
+import { ChatList, ChatListHeader as Header } from 'components/Chats';
 
 function ChatListPage() {
   return (
     <Container>
-      <ChatListHeader />
+      <Header />
       <ChatList />
     </Container>
   );

@@ -15,3 +15,4 @@ export { default as HorizontalDivider } from './HorizontalDivider';
 export { default as Gallery } from './Gallery';
 export { default as HorizontalImages } from './HorizontalImages';
 export { default as ImageMessage } from './ImageMessage';
+export { default as ProgressBar } from './ProgressBar';

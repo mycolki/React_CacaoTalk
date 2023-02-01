@@ -5,6 +5,7 @@ import Button from './Button';
 import Circle from './Circle';
 import { DeleteIcon } from './Icon';
 import Image from './Image';
+import ProgressBar from './ProgressBar';
 
 interface ImageMessageProps {
   image?: ImageType;
@@ -15,13 +16,16 @@ interface ImageMessageProps {
 function ImageMessage({ loading, image, className }: ImageMessageProps) {
   return (
     <Container className={className}>
-      <Image src={image?.imageUrl ?? ''} alt={image?.description ?? ''} size={150} borderRadius="10px" />
+      <Image src={image?.imageUrl ?? ''} alt={image?.description ?? ''} size={200} borderRadius="10px" />
       {loading && (
-        <DeleteButton>
-          <Circle size="40px" padding="10px" bgColor="BLACK">
-            <DeleteIcon />
-          </Circle>
-        </DeleteButton>
+        <>
+          <DeleteButton>
+            <Circle size="40px" padding="10px" bgColor="BLACK">
+              <DeleteIcon />
+            </Circle>
+          </DeleteButton>
+          <ProgressBar />
+        </>
       )}
     </Container>
   );

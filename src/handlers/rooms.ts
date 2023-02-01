@@ -38,6 +38,6 @@ export function postMessage(roomId: string, message: Omit<Message, 'id' | 'timeS
     // image uploading
     setTimeout(() => {
       resolve(newMessage);
-    }, 5000);
+    }, 3000);
   });
 }

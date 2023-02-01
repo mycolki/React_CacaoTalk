@@ -26,8 +26,6 @@ function ChatBottom({ roomId, user }: { roomId: string; user: Member }) {
 export default ChatBottom;
 
 const Wrapper = styled.div`
-  position: fixed;
-  width: var(--app-width);
-  bottom: 0;
+  height: var(--bottom-message-form);
   background-color: ${COLORS.PALE_GREY};
 `;
