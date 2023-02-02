@@ -40,13 +40,13 @@ const Container = styled.div`
   box-shadow: 0 2px 4px 0 ${COLORS.PURPLE_OPACITY40};
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: transparent;
     border-radius: 10px;
     background-clip: padding-box;
-    border: 5px solid transparent;
+    border: 6px solid transparent;
   }
   &:hover {
     &::-webkit-scrollbar-thumb {
