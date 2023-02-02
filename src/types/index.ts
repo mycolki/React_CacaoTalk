@@ -28,6 +28,7 @@ export type ChatRoomListType = ChatRoomListItemType[];
 
 export interface ChatRoomType {
   roomId: string;
-  otherUser: UserType;
   messages: MessageType[];
+  unreadCount: number;
+  otherUser: UserType;
 }

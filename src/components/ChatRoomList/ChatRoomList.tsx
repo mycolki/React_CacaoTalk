@@ -3,8 +3,8 @@ import { useQuery } from 'react-query';
 import styled from '@emotion/styled';
 import { getChatRoomList } from 'handlers/chatRoomList';
 import { formatLastMessageDate } from 'utils/manipulateDate';
-import COLORS from 'style/palette';
 import { chatRoomListItemProfileImageSlide, chatRoomListItemTextSlide } from 'style/animation';
+import COLORS from 'style/palette';
 import { StyledText4, Text } from 'components/Shared/Texts';
 import { Circle, Image } from 'components/Shared';
 
@@ -16,31 +16,24 @@ function ChatRoomList() {
     <List>
       {chatRoomList?.map(
         ({ roomId, lastMessage: { timeStamp, type, text }, otherUser: { name, profileImageUrl }, unreadCount }) => (
-          <ListRow
-            key={roomId}
-            onClick={() =>
-              naviagte(`/room/${roomId}`, {
-                state: {
-                  unreadCount,
-                },
-              })
-            }
-          >
+          <ListRow key={roomId} onClick={() => naviagte(`/room/${roomId}`)}>
             <ProfileImage src={profileImageUrl} alt={name} size={56} borderRadius="28px" />
-            <ChatContents>
+
+            <ChatRoomInfo>
               <Row>
                 <OtherUserName>{name}</OtherUserName>
                 <LastMessageTime>{formatLastMessageDate(timeStamp)}</LastMessageTime>
               </Row>
+
               <Row>
                 <LastMessage>{type === 'text' ? text : '사진을 보냈습니다.'}</LastMessage>
-                {unreadCount > 0 && (
+                {Boolean(unreadCount) && (
                   <Circle size="1.125rem" bgColor="PURPLE" padding="4px 6px">
                     <UnreadCount>{unreadCount}</UnreadCount>
                   </Circle>
                 )}
               </Row>
-            </ChatContents>
+            </ChatRoomInfo>
           </ListRow>
         )
       )}
@@ -69,13 +62,13 @@ const ProfileImage = styled(Image)`
   position: relative;
   left: -20px;
   animation-name: ${chatRoomListItemProfileImageSlide};
-  animation-duration: 200ms;
+  animation-duration: 180ms;
   animation-timing-function: ease-out;
   animation-iteration-count: 1;
   animation-fill-mode: both;
   animation-delay: 280ms;
 `;
-const ChatContents = styled.div`
+const ChatRoomInfo = styled.div`
   position: relative;
   flex-grow: 1;
   display: flex;

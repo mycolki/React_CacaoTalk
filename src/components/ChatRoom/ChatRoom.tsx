@@ -15,9 +15,9 @@ interface ChatRoomProps {
 }
 
 function ChatRoom({ messages, currentUser, roomId }: ChatRoomProps) {
-  const { showingGallery } = useContext(GalleryContext);
   const [localImages, setLocalImages] = useState(() => getLocalImages());
   const [uploadingImage, setUploadingImage] = useState<ImageType | null>(null);
+  const { showingGallery } = useContext(GalleryContext);
   const { sendMessage, sendMessageAsync } = useSendMessage(roomId);
 
   const uploadImage = useCallback(
@@ -30,8 +30,8 @@ function ChatRoom({ messages, currentUser, roomId }: ChatRoomProps) {
         user: currentUser,
       });
 
-      setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
       setUploadingImage(null);
+      setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
     },
     [localImages, sendMessageAsync, currentUser]
   );

@@ -7,12 +7,12 @@ import { BackIcon, SearchIcon, UploadIcon } from 'components/Icon';
 import { StyledText3 } from 'components/Shared/Texts';
 
 interface ChatRoomHeaderProps {
-  user: string;
+  otherUser: string;
 }
 
-function ChatRoomHeader({ user }: ChatRoomHeaderProps) {
-  const { toggleGallery } = useContext(GalleryContext);
+function ChatRoomHeader({ otherUser }: ChatRoomHeaderProps) {
   const navigate = useNavigate();
+  const { toggleGallery } = useContext(GalleryContext);
 
   return (
     <Header
@@ -25,7 +25,7 @@ function ChatRoomHeader({ user }: ChatRoomHeaderProps) {
           <BackIcon />
         </Button>
       }
-      center={<StyledText3 color="WHITE">{user}</StyledText3>}
+      center={<StyledText3 color="WHITE">{otherUser}</StyledText3>}
       right={
         <Buttons>
           <Button onClick={toggleGallery}>

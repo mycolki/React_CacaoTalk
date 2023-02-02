@@ -1,20 +1,22 @@
 import { useEffect } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { putChatRoomListunreadCount } from 'handlers/chatRoomList';
-import { getChatRoom } from 'handlers/chatRoom';
+import { getChatRoom, putChatRoomUnreadCount } from 'handlers/chatRoom';
 
-function useChatRoom({ roomId, unreadCount }: { roomId?: string; unreadCount: number }) {
+function useChatRoom(roomId?: string) {
   const { mutate: updateChatRoomListunreadCount } = useMutation(putChatRoomListunreadCount);
+  const { mutate: updateChatRoomUnreadCount } = useMutation(putChatRoomUnreadCount);
 
   const { data: room } = useQuery(['room', roomId], () => getChatRoom(roomId), {
     enabled: Boolean(roomId),
   });
 
   useEffect(() => {
-    if (unreadCount > 0 && roomId) {
+    if (roomId && room?.unreadCount) {
       updateChatRoomListunreadCount(roomId);
+      updateChatRoomUnreadCount(roomId);
     }
-  }, [roomId, unreadCount, updateChatRoomListunreadCount]);
+  }, [room?.unreadCount, roomId, updateChatRoomListunreadCount, updateChatRoomUnreadCount]);
 
   return { room };
 }

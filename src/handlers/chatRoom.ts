@@ -37,9 +37,25 @@ export function postMessage(roomId: string, message: Omit<MessageType, 'id' | 't
       return;
     }
 
-    // image uploading
     setTimeout(() => {
       resolve(newMessage);
     }, 3000);
+  });
+}
+
+export function putChatRoomUnreadCount(roomId: string) {
+  return new Promise<ChatRoomType>((resolve, reject) => {
+    const sessionKey = `roomId:${roomId}`;
+    const session = getSession<ChatRoomType>(sessionKey);
+
+    if (!session) {
+      reject(new Error('채팅방 데이터가 존재하지 않습니다.'));
+      return;
+    }
+
+    const updatedRoom = { ...session, unreadCount: 0 };
+    setSession(sessionKey, updatedRoom);
+
+    resolve(updatedRoom);
   });
 }

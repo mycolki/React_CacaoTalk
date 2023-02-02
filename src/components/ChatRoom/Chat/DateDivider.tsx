@@ -2,11 +2,7 @@ import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 import { Text } from 'components/Shared/Texts';
 
-interface DateDividerProps {
-  date: string;
-}
-
-function DateDivider({ date }: DateDividerProps) {
+function DateDivider({ date }: { date: string }) {
   return (
     <Divider>
       <Line />

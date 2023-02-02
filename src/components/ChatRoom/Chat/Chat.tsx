@@ -1,14 +1,13 @@
 import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { leftChatSlide, rightChatSlide } from 'style/animation';
 import COLORS from 'style/palette';
+import { leftChatSlide, rightChatSlide } from 'style/animation';
 import { Text } from 'components/Shared/Texts';
 
 type Align = 'left' | 'right';
-
 interface ChatProps {
-  align: 'left' | 'right';
+  align: Align;
   time?: string;
 }
 

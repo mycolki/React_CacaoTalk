@@ -1,20 +1,13 @@
-import { useLocation, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { useCurrentUser, useChatRoom } from 'hooks';
 import { GalleryProvider } from 'context/GalleryContext';
 import { ChatRoom, ChatRoomHeader } from 'components/ChatRoom';
-
-interface Location {
-  state: {
-    unreadCount: number;
-  };
-}
+import { useParams } from 'react-router-dom';
 
 function ChatRoomPage() {
-  const { state } = useLocation() as Location;
-  const { roomId } = useParams<{ roomId: string }>();
-  const { room } = useChatRoom({ roomId, unreadCount: state.unreadCount });
   const currentUser = useCurrentUser();
+  const { roomId } = useParams<{ roomId: string }>();
+  const { room } = useChatRoom(roomId);
 
   if (!roomId || !room || !currentUser) {
     return null;
@@ -23,7 +16,7 @@ function ChatRoomPage() {
   return (
     <GalleryProvider>
       <Page>
-        <ChatRoomHeader user={room.otherUser.name} />
+        <ChatRoomHeader otherUser={room.otherUser.name} />
         <ChatRoom roomId={roomId} messages={room.messages} currentUser={currentUser} />
       </Page>
     </GalleryProvider>
