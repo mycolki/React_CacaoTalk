@@ -5,13 +5,13 @@ function useChatsScroll(messages: MessageType[], localImage: ImageType | null) {
   const ref = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const talksEl = ref.current;
+    const chatsEl = ref.current;
 
-    if (talksEl) {
+    if (chatsEl) {
       const occuredOverFlowY = ref.current.scrollHeight > ref.current.clientHeight;
 
       if (occuredOverFlowY) {
-        talksEl.scrollTop = talksEl.scrollHeight;
+        chatsEl.scrollTop = chatsEl.scrollHeight;
       }
     }
   }, [ref, messages, localImage]);
