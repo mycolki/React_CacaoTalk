@@ -43,8 +43,26 @@ function ChatRoomList() {
 export default ChatRoomList;
 
 const List = styled.ul`
+  height: calc(100% - var(--header));
   padding-top: 10px;
   list-style: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: ${COLORS.COOL_GREY};
+    }
+  }
 `;
 
 const ListRow = styled.li`

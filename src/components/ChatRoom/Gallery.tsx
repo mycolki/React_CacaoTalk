@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import styled from '@emotion/styled';
 import { ImageType } from 'types';
 import COLORS from 'style/palette';
@@ -6,17 +6,25 @@ import { galleryDown } from 'style/animation';
 import { Button, Image } from '../Shared';
 
 interface GalleryProps {
-  images: ImageType[];
-  onClick: (image: ImageType) => void;
+  onClick: (image: ImageType, callbackAfterClick: () => void) => void;
 }
 
-function Gallery({ images, onClick }: GalleryProps) {
+function Gallery({ onClick }: GalleryProps) {
+  const [images, setLocalImages] = useState(() => getLocalImages());
+
   return (
     <Container>
       <ImagesWrapper>
-        {images.map(({ imageUrl, description }) => (
-          <Button key={imageUrl} onClick={() => onClick({ imageUrl, description })}>
-            <Image src={imageUrl} alt={description} size={46} borderRadius="6px" />
+        {images.map(image => (
+          <Button
+            key={image.imageUrl}
+            onClick={() =>
+              onClick(image, () => {
+                setLocalImages(images.filter(displayedImage => displayedImage.imageUrl !== image.imageUrl));
+              })
+            }
+          >
+            <Image src={image.imageUrl} alt={image.description} size={46} borderRadius="6px" />
           </Button>
         ))}
       </ImagesWrapper>
@@ -25,6 +33,15 @@ function Gallery({ images, onClick }: GalleryProps) {
 }
 
 export default memo(Gallery);
+
+function getLocalImages() {
+  return Array(7)
+    .fill(null)
+    .map((_, i) => ({
+      imageUrl: `/asset/img-shot-${i + 1}.png`,
+      description: `img-shot-${i + 1}`,
+    }));
+}
 
 const Container = styled.div`
   width: var(--app-width);

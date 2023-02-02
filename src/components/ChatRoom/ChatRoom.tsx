@@ -15,13 +15,12 @@ interface ChatRoomProps {
 }
 
 function ChatRoom({ messages, currentUser, roomId }: ChatRoomProps) {
-  const [localImages, setLocalImages] = useState(() => getLocalImages());
   const [uploadingImage, setUploadingImage] = useState<ImageType | null>(null);
   const { showingGallery } = useContext(GalleryContext);
   const { sendMessage, sendMessageAsync } = useSendMessage(roomId);
 
   const uploadImage = useCallback(
-    async (image: ImageType) => {
+    async (image: ImageType, filterGalleryImages: () => void) => {
       setUploadingImage(image);
 
       await sendMessageAsync({
@@ -31,14 +30,14 @@ function ChatRoom({ messages, currentUser, roomId }: ChatRoomProps) {
       });
 
       setUploadingImage(null);
-      setLocalImages(localImages.filter(({ imageUrl }) => imageUrl !== image.imageUrl));
+      filterGalleryImages();
     },
-    [localImages, sendMessageAsync, currentUser]
+    [sendMessageAsync, currentUser]
   );
 
   return (
     <Container>
-      {showingGallery && <Gallery images={localImages} onClick={uploadImage} />}
+      {showingGallery && <Gallery onClick={uploadImage} />}
       <Chats messages={messages} currentUser={currentUser} uploadingImage={uploadingImage} />
       <MessageForm
         onSubmit={(text: string) => {
@@ -54,15 +53,6 @@ function ChatRoom({ messages, currentUser, roomId }: ChatRoomProps) {
 }
 
 export default ChatRoom;
-
-function getLocalImages() {
-  return Array(7)
-    .fill(null)
-    .map((_, i) => ({
-      imageUrl: `/asset/img-shot-${i + 1}.png`,
-      description: `img-shot-${i + 1}`,
-    }));
-}
 
 const Container = styled.div`
   height: calc(100% - var(--header));

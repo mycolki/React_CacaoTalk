@@ -49,6 +49,7 @@ const Row = styled.div<{ align: Align }>`
 `;
 
 const MessageTime = styled(Text)`
+  padding-bottom: 2px;
   opacity: 0.4;
   font-size: 0.75rem;
   color: ${COLORS.CHARCOAL_GREY2};
