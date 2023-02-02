@@ -7,7 +7,7 @@ dayjs.extend(isBetween);
 dayjs.extend(utc);
 dayjs.locale('ko');
 
-type FormatType = 'hh:mm' | 'a hh:mm' | 'YYYY년 M월 DD일' | 'M월 DD일' | 'dddd' | 'YYYY.M.DD';
+type FormatType = 'hh:mm' | 'a hh:mm' | 'YYYY년 M월 D일' | 'M월 D일' | 'dddd' | 'YYYY.M.D';
 
 export function formatDate(date: string, formatType?: FormatType) {
   return dayjs(date).format(formatType);
@@ -36,11 +36,11 @@ export function formatLastMessageDate(date: string) {
   }
 
   if (targetDate.isBefore(today, 'year')) {
-    return formatDate(date, 'YYYY.M.DD');
+    return formatDate(date, 'YYYY.M.D');
   }
 
   if (targetDate.isBefore(dateBefore7Days)) {
-    return formatDate(date, 'M월 DD일');
+    return formatDate(date, 'M월 D일');
   }
 
   throw new Error('data 가 올바르지 않습니다.');

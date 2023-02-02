@@ -29,7 +29,7 @@ function Chats({ messages, currentUser, uploadingImage }: ChatsProps) {
 
         return (
           <Fragment key={id}>
-            {isFirstMessageOfTheDay && <DateDivider date={formatDate(timeStamp, 'YYYY년 M월 DD일')} />}
+            {isFirstMessageOfTheDay && <DateDivider date={formatDate(timeStamp, 'YYYY년 M월 D일')} />}
 
             <Chat
               align={isUserMessage ? 'right' : 'left'}
