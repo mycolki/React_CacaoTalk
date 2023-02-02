@@ -33,7 +33,7 @@ function Chats({ messages, currentUser, uploadingImage }: ChatsProps) {
 
             <Chat
               align={isUserMessage ? 'right' : 'left'}
-              time={isSendedMessageIn1Minute ? '' : formatDate(timeStamp, 'HH:mm')}
+              time={isSendedMessageIn1Minute ? '' : formatDate(timeStamp, 'a hh:mm')}
             >
               {type === 'text'
                 ? text && (

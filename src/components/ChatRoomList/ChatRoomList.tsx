@@ -97,7 +97,7 @@ const LastMessageTime = styled(Text)`
   font-weight: 500;
   letter-spacing: normal;
   text-align: right;
-  color: ${COLORS.COOL_GREY};
+  color: ${COLORS.CHARCOAL_GREY2};
 `;
 
 const LastMessage = styled(Text)`

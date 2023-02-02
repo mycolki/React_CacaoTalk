@@ -15,7 +15,7 @@ function Chat({ align, time, children }: PropsWithChildren<ChatProps>) {
   return (
     <Row align={align}>
       {children}
-      <SendedTime>{time ?? ''}</SendedTime>
+      <MessageTime>{time ?? ''}</MessageTime>
     </Row>
   );
 }
@@ -48,7 +48,7 @@ const Row = styled.div<{ align: Align }>`
   ${props => (props.align === 'right' ? Right : Left)}
 `;
 
-const SendedTime = styled(Text)`
+const MessageTime = styled(Text)`
   opacity: 0.4;
   font-size: 0.75rem;
   color: ${COLORS.CHARCOAL_GREY2};

@@ -1,4 +1,4 @@
-import { memo, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import COLORS from 'style/palette';
 

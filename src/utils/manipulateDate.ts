@@ -7,7 +7,7 @@ dayjs.extend(isBetween);
 dayjs.extend(utc);
 dayjs.locale('ko');
 
-type FormatType = 'HH:mm' | 'YYYY년 M월 DD일' | 'M월 DD일' | 'dddd' | 'YYYY.MM.DD';
+type FormatType = 'hh:mm' | 'a hh:mm' | 'YYYY년 M월 DD일' | 'M월 DD일' | 'dddd' | 'YYYY.M.DD';
 
 export function formatDate(date: string, formatType?: FormatType) {
   return dayjs(date).format(formatType);
@@ -24,7 +24,7 @@ export function formatLastMessageDate(date: string) {
   const dateBefore7Days = dayjs().subtract(7, 'day');
 
   if (targetDate.isSame(today, 'day')) {
-    return formatDate(date, 'HH:mm');
+    return formatDate(date, 'a hh:mm');
   }
 
   if (targetDate.isSame(yesterday, 'day')) {
@@ -36,7 +36,7 @@ export function formatLastMessageDate(date: string) {
   }
 
   if (targetDate.isBefore(today, 'year')) {
-    return formatDate(date, 'YYYY.MM.DD');
+    return formatDate(date, 'YYYY.M.DD');
   }
 
   if (targetDate.isBefore(dateBefore7Days)) {
