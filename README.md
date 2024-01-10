@@ -1,18 +1,89 @@
-# Chatting
-Kakao Talk 의 일부 기능을 구현한 과제입니다.
+# CaCao Chatting
 
-[채팅 시연 영상.MOV](https://kakao-style.s3.ap-northeast-2.amazonaws.com/flow-ani.mov)
+[🎥 채팅 시연 영상.MOV](https://kakao-style.s3.ap-northeast-2.amazonaws.com/flow-ani.mov)
+
+Talk App의 일부 기능을 React로 구현한 웹 애플리케이션입니다.<br />
+
+
 <!-- <p>
 <img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/list.png" width="32%" />
 <img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/loading2.png" width="32%" />
 <img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/image.png" width="32%"/>
 </p> -->
 
+
+
+Assignment implementation
+
+
 <br />
 
-# Chatting Spec
+## Stack
 
-## 필수 요구사항
+- 코어 : React, TypeScript
+- 상태관리 : React-Query, React-Context
+- 스타일링 : Emotion
+- 패키지 매니저 : Yarn
+- 코드 스타일 : Eslint, Husky, Prettier
+
+<br />
+
+## Features
+
+### 읽지 않은 메세지 확인
+
+채팅방에서 메세지를 확인하고 채팅목록으로 돌아가면 카운트는 보이지 않습니다.
+
+<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/iu.gif" width="30%" />
+
+### 1분동안 연속으로 메세지 전송
+
+1분 내로 여러개의 메세지를 보내도, 마지막 메세지만 시간이 표시됩니다.
+
+<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/1m.gif" width="30%" />
+
+### 애니메이션
+
+채팅 목록 및 채팅방 슬라이드 애니메이션 효과를 구현했습니다.
+
+<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/animation.gif" width="30%" />
+
+### 갤러리 사진 전송
+
+갤러리에서 사진을 선택해서 전송하면, 전송되기까지 ProgressBar 가 보여집니다.
+
+<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/gallery.gif" width="30%" />
+
+<br />
+
+## About Development
+
+### Development Strategy
+
+- React-Query 와 SessionStroage 를 이용하여, 가상의 서버에 요청해서 데이터를 받아오는 플로우를 구현했습니다.
+- 서버에는 UTC 포맷으로 전송 시간을 저장합니다.
+  클라이언트에서는 로컬 시간으로, 원하는 형식에 맞게 포맷팅하는 유틸 함수를 작성했습니다.
+- 범용 컴포넌트와 도메인성격이 강한 컴포넌트를 위계에 맞게 분리했습니다.
+- 메세지를 전송한 유저를 구분하기 위해, 유저 데이터를 생성하고 서버로부터 받아오는 로직을 추가했습니다.
+- ErrorBoundary 를 구현해서, 에러 발생시 애플리케이션을 초기화할 수 있도록 구현했습니다.
+
+<br />
+
+### React Context 를 이용한 갤러리 토글
+
+애플리케이션 전역으로 관리해야 할 상태가 많이 없어서, 갤러리를 핸들링하는 데에 Context만을 이용하는 것으로 충분했습니다. 채팅방헤더의 사진 업로드 버튼을 클릭했을 때, 갤러리를 보여줄 수 있는 플래그와 토글할 수 있는 핸들러만 Context 에서 관리했습니다.
+
+<br />
+
+### React-Query 와 SessionStorage 를 이용한 서버 데이터 핸들링 전략.
+
+서버의 데이터를 가져와서 클라이언트에서 관리하는 것에 대한 전략을 고민한 끝에, React-Query 와 SessionStorage 를 사용했습니다. Mock Data 를 서버의 DB로 간주하고, 서버의 데이터를 클라이언트에서 캐싱하는 역할로 SessionStorage를 사용했습니다. 데이터를 가져오는 queryFn 을 호출하게 되면, SessionStorage 에 캐싱된 데이터를 반환합니다. 만약 세션에 데이터가 없을 경우에는 서버 역할을 하는 Mock Data 를 가져와서 저장하고 반환합니다. 서버로 요청을 보내는 로직을 완전히 분리해서, 추후 실제 API 를 요청하는 로직으로 대체할 수 있도록 확장성을 고려해서 작업했습니다.
+
+<br />
+
+## Specification Details
+
+**`필수 요구사항`**
 
 - 채팅목록
   - 각 채팅목록에는 최근 전송한 메세지, 읽지 않은 메세지 개수, 마지막 메세지 전송 시간을 표시해 주세요.
@@ -23,7 +94,7 @@ Kakao Talk 의 일부 기능을 구현한 과제입니다.
   - 날짜가 바뀌면 날짜 구분선을 표시해 주세요.
   - 사진 전송 기능을 구현해 주세요.
 
-## 추가 명세 정의
+**`추가 명세 정의`**
 
 요구 사항에 정의되어 있지 않은 부분은, 사용 조건을 가정하여 명세를 정의하고 개발했습니다.
 
@@ -75,48 +146,6 @@ Kakao Talk 의 일부 기능을 구현한 과제입니다.
 
 <br />
 
-## Stack
-
-- 코어 : React, TypeScript
-
-- 상태관리 : React-Query, React-Context
-
-- 스타일링 : Emotion
-
-- 패키지 매니저 : Yarn
-
-- 코드 스타일 : Eslint, Husky, Prettier
-
-<br />
-
-## Features
-
-### 읽지 않은 메세지 확인
-
-채팅방에서 메세지를 확인하고 채팅목록으로 돌아가면 카운트는 보이지 않습니다.
-
-<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/iu.gif" width="30%" />
-
-### 1분동안 연속으로 메세지 전송
-
-1분 내로 여러개의 메세지를 보내도, 마지막 메세지만 시간이 표시됩니다.
-
-<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/1m.gif" width="30%" />
-
-### 애니메이션
-
-채팅 목록 및 채팅방 슬라이드 애니메이션 효과를 구현했습니다.
-
-<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/animation.gif" width="30%" />
-
-### 갤러리 사진 전송
-
-갤러리에서 사진을 선택해서 전송하면, 전송되기까지 ProgressBar 가 보여집니다.
-
-<img src="https://kakao-style.s3.ap-northeast-2.amazonaws.com/gallery.gif" width="30%" />
-
-<br />
-
 ## Installation
 
 ### 실행 환경
@@ -146,30 +175,5 @@ Kakao Talk 의 일부 기능을 구현한 과제입니다.
   ```ts
   $ yarn start
   ```
-
-<br />
-
-## About Development
-
-### Development Strategy
-
-- React-Query 와 SessionStroage 를 이용하여, 가상의 서버에 요청해서 데이터를 받아오는 플로우를 구현했습니다.
-- 서버에는 UTC 포맷으로 전송 시간을 저장합니다.
-  클라이언트에서는 로컬 시간으로, 원하는 형식에 맞게 포맷팅하는 유틸 함수를 작성했습니다.
-- 범용 컴포넌트와 도메인성격이 강한 컴포넌트를 위계에 맞게 분리했습니다.
-- 메세지를 전송한 유저를 구분하기 위해, 유저 데이터를 생성하고 서버로부터 받아오는 로직을 추가했습니다.
-- ErrorBoundary 를 구현해서, 에러 발생시 애플리케이션을 초기화할 수 있도록 구현했습니다.
-
-<br />
-
-### React Context 를 이용한 갤러리 토글
-
-애플리케이션 전역으로 관리해야 할 상태가 많이 없어서, 갤러리를 핸들링하는 데에 Context만을 이용하는 것으로 충분했습니다. 채팅방헤더의 사진 업로드 버튼을 클릭했을 때, 갤러리를 보여줄 수 있는 플래그와 토글할 수 있는 핸들러만 Context 에서 관리했습니다.
-
-<br />
-
-### React-Query 와 SessionStorage 를 이용한 서버 데이터 핸들링 전략.
-
-서버의 데이터를 가져와서 클라이언트에서 관리하는 것에 대한 전략을 고민한 끝에, React-Query 와 SessionStorage 를 사용했습니다. Mock Data 를 서버의 DB로 간주하고, 서버의 데이터를 클라이언트에서 캐싱하는 역할로 SessionStorage를 사용했습니다. 데이터를 가져오는 queryFn 을 호출하게 되면, SessionStorage 에 캐싱된 데이터를 반환합니다. 만약 세션에 데이터가 없을 경우에는 서버 역할을 하는 Mock Data 를 가져와서 저장하고 반환합니다. 서버로 요청을 보내는 로직을 완전히 분리해서, 추후 실제 API 를 요청하는 로직으로 대체할 수 있도록 확장성을 고려해서 작업했습니다.
 
 <br />
