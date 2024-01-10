@@ -1,8 +1,8 @@
 # CaCao Chatting
 
-[🎥 채팅 시연 영상.MOV](https://kakao-style.s3.ap-northeast-2.amazonaws.com/flow-ani.mov)
+Talk App의 일부 기능을 React로 구현한 웹 애플리케이션입니다.  [🎥 채팅 시연 영상.MOV](https://kakao-style.s3.ap-northeast-2.amazonaws.com/flow-ani.mov)
 
-Talk App의 일부 기능을 React로 구현한 웹 애플리케이션입니다.<br />
+
 
 
 <!-- <p>
