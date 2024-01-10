@@ -1,0 +1,22 @@
+{
+  "roomId": "Nlf86LKUIDt9O7Twl5Y5y",
+  "otherUser": {
+    "id": "leedoc@kakao.com",
+    "name": "이미라 의사",
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/LeeMiRa.png"
+  },
+  "messages": [
+    {
+      "id": "_VM6Q7hOSMKf4PUkwa_QS",
+      "timeStamp": "2023-02-02T08:10:31Z",
+      "type": "text",
+      "user": {
+        "id": "leedoc@kakao.com",
+        "name": "이미라 의사",
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/LeeMiRa.png"
+      },
+      "text": "휴가 잘 보내고 계신가요? 다름이 아니라 지금 급한 일이 생겼어요."
+    }
+  ],
+  "unreadCount": 0
+}

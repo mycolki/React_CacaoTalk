@@ -1,0 +1,22 @@
+{
+  "roomId": "vdNIrTmK-_NiGq5aUleRY",
+  "otherUser": {
+    "id": "jingoo@kakao.com",
+    "name": "구찬성 지배인",
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
+  },
+  "messages": [
+    {
+      "id": "_VM6Q7hOSMKf4PUkwa_QS",
+      "timeStamp": "2023-01-27T00:19:31Z",
+      "type": "text",
+      "user": {
+        "id": "jingoo@kakao.com",
+        "name": "구찬성 지배인",
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooChanSung.png"
+      },
+      "text": "아 휴가셨군요. 약속은 다음으로 미루시죠!"
+    }
+  ],
+  "unreadCount": 0
+}

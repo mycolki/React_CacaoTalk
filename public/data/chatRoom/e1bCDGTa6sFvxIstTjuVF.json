@@ -1,0 +1,22 @@
+{
+  "roomId": "e1bCDGTa6sFvxIstTjuVF",
+  "otherUser": {
+    "id": "koohyunmo@kakao.com",
+    "name": "구현모",
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
+  },
+  "messages": [
+    {
+      "id": "shCneaNVzICMcgv0BsqLu",
+      "timeStamp": "2022-09-20T07:22:31Z",
+      "type": "text",
+      "user": {
+        "id": "koohyunmo@kakao.com",
+        "name": "구현모",
+        "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/gooHyunMo.png"
+      },
+      "text": "술먹자"
+    }
+  ],
+  "unreadCount": 0
+}

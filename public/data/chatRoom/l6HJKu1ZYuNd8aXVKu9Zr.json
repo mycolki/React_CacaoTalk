@@ -1,0 +1,32 @@
+{
+  "roomId": "l6HJKu1ZYuNd8aXVKu9Zr",
+  "otherUser": {
+    "id": "fullmoon@kakao.com",
+    "name": "장만월 사장님",
+    "profileImageUrl": "https://kakao-style.s3.ap-northeast-2.amazonaws.com/janFullMoon.png"
+  },
+  "messages": [
+    {
+      "id": "_uDoDhjztBT-WzkWUB6Z0",
+      "timeStamp": "2023-01-29T00:05:31Z",
+      "type": "text",
+      "user": "fullmoon@kakao.com",
+      "text": "출근했니?"
+    },
+    {
+      "id": "QOUJm0pFkc0aG9GxAD6gZ",
+      "timeStamp": "2023-02-01T00:10:31Z",
+      "type": "text",
+      "user": "fullmoon@kakao.com",
+      "text": "출근했냐구?"
+    },
+    {
+      "id": "sl3RrmEhu9JpnBsWE5vPJ",
+      "timeStamp": "2023-02-03T11:10:31Z",
+      "type": "text",
+      "user": "fullmoon@kakao.com",
+      "text": "어딘데 출근 안하니? 죽고싶니?"
+    }
+  ],
+  "unreadCount": 2
+}
